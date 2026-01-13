@@ -1,6 +1,6 @@
 "use strict";
 
-
+// this is the object for the ellipses
 ellipse
 
 
