@@ -1,5 +1,32 @@
 "use strict";
 
+//rectangle1
+let x1 = 0
+let y1 = 0
+let w1 = 200
+let h1 = 600
+let r1 = 0
+let g1 = 0
+let b1 = 100
+
+//rectangle2
+let x2 = 200
+let y2 = 0
+let w2 = 200
+let h2 = 600
+let r2 = 0
+let g2 = 0
+let b2 = 170
+
+//rectangle3
+let x3 = 400
+let y3 = 0
+let w3 = 200
+let h3 = 600
+let r3 = 0
+let g3 = 0
+let b3 = 255
+
 
 function setup() {
     console.log("go");
@@ -14,40 +41,7 @@ function draw() {
     drawRectangle(x2, y2, w2, h2, r2, g2, b2);
     drawRectangle(x3, y3, w3, h3, r3, g3, b3);
 
-    y3 += 6;
-
-    checkRect1();
-    checkRect2();
-    checkRect3();
-
 }
-
-//rectangle1
-let x1 = 0
-let y1 = 0
-let w1 = width / 3
-let h1 = height
-let r1 = 0
-let g1 = 0
-let b1 = 100
-
-//rectangle2
-let x2 = 200
-let y2 = 100
-let w2 = 100
-let h2 = 100
-let r2 = 100
-let g2 = 200
-let b2 = 100
-
-//rectangle3
-let x3 = 300
-let y3 = 100
-let w3 = 100
-let h3 = 100
-let r3 = 255
-let g3 = 100
-let b3 = 100
 
 function drawRectangle(x, y, w, h, r, g, b) {
     push();
@@ -57,53 +51,45 @@ function drawRectangle(x, y, w, h, r, g, b) {
     pop();
 }
 
-// listens to mouse clicks to add value to rect1 position on x and y
-function mousePressed() {
-    x1 += 30;
-    y1 += 30;
-}
-
-// listens to key clicks to add value to rect2 position on x and y
-function keyPressed() {
-    if (keyCode === 32) {
-        x2 += 40;
-        y2 += 20;
-    }
-}
-
 function mouseMoved() {
-    r3 = random(0, 255);
-    g3 = random(0, 255);
-    b3 = random(0, 255);
 
-}
+    // rectangle1
+    if (mouseX > 0 && mouseX < 200) {
+        r1 = 255;
+        g1 = 255;
+        b1 = 255;
+    }
 
+    else {
+        r1 = 0;
+        g1 = 0;
+        b1 = 100;
+    }
 
-// a set of three functions to bring back the rectangles in bounds when outside
+    // rectangle2
+    if (mouseX > 200 && mouseX < 400) {
+        r2 = 255;
+        g2 = 255;
+        b2 = 255;
+    }
 
-function checkRect1() {
-    if (x1 > width) {
-        x1 = 0;
+    else {
+        r2 = 0;
+        g2 = 0;
+        b2 = 170;
     }
-    if (y1 > height) {
-        y1 = 0;
-    }
-}
 
-function checkRect2() {
-    if (x2 > width) {
-        x2 = 0;
+    // rectangle 3
+    if (mouseX > 400 && mouseX < 600) {
+        r3 = 255;
+        g3 = 255;
+        b3 = 255;
     }
-    if (y2 > height) {
-        y2 = 0;
-    }
-}
 
-function checkRect3() {
-    if (x3 > width) {
-        x3 = 0;
+    else {
+        r3 = 0;
+        g3 = 0;
+        b3 = 255;
     }
-    if (y3 > height) {
-        y3 = 0;
-    }
+
 }
