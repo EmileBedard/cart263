@@ -5,11 +5,11 @@
 // used for position
 let x1 = 100
 let x2 = 250
-let x3 = 400
+let x3 = 140
 
 let y1 = 100
 let y2 = 250
-let y3 = 400
+let y3 = 140
 
 // used for width (same height)
 let w1 = 100
