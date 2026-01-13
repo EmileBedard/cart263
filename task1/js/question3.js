@@ -41,8 +41,11 @@ function draw() {
     drawRectangle(x2, y2, w2, h2, r2, g2, b2);
     drawRectangle(x3, y3, w3, h3, r3, g3, b3);
 
+    y3 += 6;
+
     checkRect1();
     checkRect2();
+    checkRect3();
 
 }
 
@@ -60,11 +63,19 @@ function mousePressed() {
     y1 += 30;
 }
 
+// listens to key clicks to add value to rect2 position on x and y
 function keyPressed() {
     if (keyCode === 32) {
         x2 += 40;
         y2 += 20;
     }
+}
+
+function mouseMoved() {
+    r3 = random(0, 255);
+    g3 = random(0, 255);
+    b3 = random(0, 255);
+
 }
 
 
