@@ -3,12 +3,13 @@
 let counter = 0;
 
 let isOver = false;
+let isClicked = false;
 
 let square = {
     x: 200,
-    y: 200,
-    w: 200,
-    h: 200,
+    y: 80,
+    w: 100,
+    h: 100,
     r: 255,
     g: 80,
     b: 0
@@ -25,6 +26,8 @@ function draw() {
     displaySquare()
     checkCollisionWithSquare();
 
+    console.log(counter)
+
 }
 
 function checkCollisionWithSquare() {
@@ -32,7 +35,16 @@ function checkCollisionWithSquare() {
         square.r = 255; // lighter orange
         square.g = 120;
         square.b = 80;
+
+        if (isOver === true && isClicked === true) {
+            console.log("checked!");
+            counter += 1;
+            isClicked = false;
+
+        }
     }
+
+
     else {
         square.r = 255; // original color
         square.g = 80;
@@ -41,13 +53,23 @@ function checkCollisionWithSquare() {
 }
 
 function mouseMoved() {
-    if (mouseX > 200 && mouseX < 400 && mouseY > 200 && mouseY < 400) {
+    if (mouseX > 200 && mouseX < 300 && mouseY > 80 && mouseY < 180) {
         isOver = true;
     }
     else {
         isOver = false;
     }
 }
+
+function mouseClicked() {
+    if (mouseX > 200 && mouseX < 300 && mouseY > 80 && mouseY < 180) {
+        isClicked = true;
+    }
+    else {
+
+    }
+}
+
 
 function displaySquare() {
     push();
