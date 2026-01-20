@@ -7,7 +7,7 @@ let writing = {
     b: 255,
 }
 
-let position = 10;
+let position = 30;
 
 let vertical = 30;
 
@@ -30,9 +30,9 @@ function draw() {
             drawText(i, position, vertical);
         }
 
-        position = 10;
+        position = 30;
 
-        for (let i = 0; i < 16; i++) {
+        for (let i = 15; i > 0; i--) {
             vertical += 30;
             drawText(i, position, vertical);
         }
@@ -48,6 +48,7 @@ function drawText(string, x, y) {
     push();
     fill(writing.r, writing.g, writing.b);
     noStroke();
+    textAlign(CENTER, CENTER);
     textSize(writing.textPts);
     text(string, x, y);
     pop();

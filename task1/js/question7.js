@@ -90,7 +90,7 @@ function keyPressed() {
 
 }
 
-function mouseClicked() {
+function mousePressed() {
     if (shape === 'ellipse') {
         shape = 'square';
     }
