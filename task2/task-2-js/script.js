@@ -26,17 +26,34 @@ function setup() {
 
     /*************************************** */
     /* 3: all elements with the class inner-container */
-    /***CODE */
+    /***CODE */console.log(document.querySelectorAll(".inner-container"));
     /***OUTPUT: 
-     * 
+     * NodeList(8) [div.inner-container, div.inner-container, div.inner-container, div.inner-container, div.inner-container, div.inner-container, div.inner-container, div.inner-container]
      */
 
 
     /*************************************** */
     /* 4: the last image element inside the element that has the class img-container */
-    /***CODE */
+    /***CODE */let nbImgs = document.querySelectorAll(".img-container");
+    for (let i = 0; i < nbImgs.length; i++) {
+        console.log(document.querySelector("img"))
+    }
     /***OUTPUT: 
-     * 
+     * <img src="task-2-images/two.png">
+
+<img src="task-2-images/two.png">
+
+<img src="task-2-images/two.png">
+
+<img src="task-2-images/two.png">
+
+<img src="task-2-images/two.png">
+
+<img src="task-2-images/two.png">
+
+<img src="task-2-images/two.png">
+
+<img src="task-2-images/two.png">
      */
 
 
