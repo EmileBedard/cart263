@@ -58,11 +58,25 @@ function setup() {
 
 
     /*************************************** */
-    /* 5A: all h2 elements */
-    /* 5B: length of the list in 5A */
-    /* 5C: the text content of the first element in the list from 5A */
+    /* 5A: all h2 elements */console.log(document.querySelectorAll("h2"))
+    /* 5B: length of the list in 5A */console.log(document.querySelectorAll("h2").length)
+    /* 5C: the text content of the first element in the list from 5A */console.log(document.querySelectorAll("h2")[0].textContent)
     /***CODE */
-    /***OUTPUT: 
+    /***OUTPUT:
+     * a:
+NodeList [h2]
+0
+: 
+h2
+length
+: 
+1
+[[Prototype]]
+: 
+NodeList
+
+     * b:1
+     * c:The header of this fancy page
      * 
      */
 
