@@ -172,19 +172,41 @@ NodeList
     /*************************************** */
     /* 1: NEW PARAGRAPHS */
     /* 1A: Access all paragraph elements, and store the result in a variable called: allPTagsThree */
+
+
+
     /* 1B: Create a function:function customCreateElement(parent){ //body } */
     /* 1C:  In the body of customCreateElement create a new parargraph element*/
     /* 1D:  Set the text of this element to be : `using create Element`*/
     /* 1E:  Set the background of this paragraph element to be green */
     /* 1F:  Set the color of the text in this paragraph element to be white */
     /* 1G: Append this new element to the parent variable within the function. */
-    /* 1H: Iterate through the allPTagsThree array and call customCreateElement(), 
+    /* 1H: Iterate through the allPTagsThree array and call customCreateElement(),
     passing the current allPTagsThree element as the parent with each iteration.*/
     /***CODE */
 
+    let allPTagsThree = document.querySelectorAll("p");
+
+    function customCreateElement(parent) {
+        let newParagraph = document.createElement("p");
+        newParagraph.textContent = "Using create element";
+        newParagraph.style.background = "green";
+        newParagraph.style.color = "white";
+        parent.appendChild(newParagraph);
+    }
+
+    for (let i = 0; allPTagsThree.length > i; i++) {
+        customCreateElement(allPTagsThree[i])
+    }
+
+    let p3html = document.createElement('img');
+    p3html.src = "task-2-images/part-three-newparagraphs-html.png"
+
+    let p3browser = document.createElement('img');
+    p3browser.src = "task-2-images/part-three-newparagraphs-browser.png"
 
     /***EXPLANATION::
-     * 
+     * Here JS is selecting every paragraph elements, stores them in an array variable. Then, it proceeds to call a custom function (customCreateElement) every time the for loop i value is less than the length value of the "every paragraphs array". After, it adds a custom P element with white letters and green background for every targeted P element.
      * 
      */
 
