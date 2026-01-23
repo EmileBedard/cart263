@@ -232,6 +232,7 @@ NodeList
 
     /***CODE */
     let color = "purple";
+    let text = "ODD";
 
 
     for (let i = 0; i < 10; i++) {
@@ -245,14 +246,18 @@ NodeList
             box.style.left = a * 40 + "px";
             box.style.top = top;
             box.style.background = color;
+            box.textContent = text;
 
         };
 
         if (color === "purple") {
             color = "white"
+            text = "EVEN"
         }
         else if (color === "white") {
             color = "purple"
+            text = "ODD"
+
         }
 
     }
@@ -266,29 +271,63 @@ NodeList
 
 
     /***EXPLANATION::
-     * 
+     * here every time the first loop starts it sets the hight with the css in line "top" attribute. Then draws a row according to the picked color and finished the row loop before moving the top a bit down and restarting again.
      * 
      */
 
     /*************************************** */
     /* 3: GRID OF BOXES II */
 
-    /* 3A: Create ANOTHER nested for loop - in order to generate a new grid ... 
+    /* 3A: Create ANOTHER nested for loop - in order to generate a new grid ...
         USE the same customNewBoxCreate function..., the only difference is that the parent element 
         for each of these new divs is the element whose id is `new-grid-three`. */
-    /* 3B: Then: write the code to check when a column is a multiple of 3 (no remainder), 
+    /* 3B: Then: write the code to check when a column is a multiple of 3 (no remainder),
         when it is a column where the remainder is 1 or when the remainder is 2 ... 
         HINT:: look up the % operator.. */
-    /* 3C: Then for each of the above cases: give the new divs in the first case a background of red, 
+    /* 3C: Then for each of the above cases: give the new divs in the first case a background of red,
             then the second a background of orange and the third yellow. */
-    /*  3D: Finally, let each div contain the text content representing the associated remainder 
+    /*  3D: Finally, let each div contain the text content representing the associated remainder
         when dividing by three. */
 
     /***CODE */
+    let backColor = "white";
+    let rowNb = 0;
+
+    for (let i = 0; i < 10; i++) {
+
+        let left = i * 40 + "px";
+
+
+        let col = (i % 3);
+
+        if (col === 0) {
+            backColor = "white";
+            rowNb = 0;
+        }
+        else if (col === 1) {
+            backColor = "red";
+            rowNb = 1;
+        }
+        else if (col === 2) {
+            backColor = "yellow";
+            rowNb = 2;
+        }
+
+        for (let a = 0; a < 10; a++) {
+
+            let box = customNewBoxCreate(document.querySelector("#new-grid-three"));
+
+            box.style.top = a * 40 + "px";
+            box.style.left = left;
+            box.style.background = backColor;
+            box.textContent = rowNb;
+
+        };
+    }
 
 
     /***EXPLANATION::
-     * 
+     * here the program draws each column one by one and takes the modulo operator value to assign a certain text (0,1,2) and a certain color.
      * 
      */
 
