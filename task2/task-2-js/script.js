@@ -231,12 +231,29 @@ NodeList
         otherwise lat it have the content `ODD`.*/
 
     /***CODE */
+    let color = "purple";
+
+
     for (let i = 0; i < 10; i++) {
 
-        customNewBoxCreate(document.querySelector("#new-grid"));
-        // how to place the different cubes in the html grid layout ??
-        // why return in the custom function ? how does it work ?
+        let top = i * 40 + "px";
 
+        for (let a = 0; a < 10; a++) {
+
+            let box = customNewBoxCreate(document.querySelector("#new-grid"));
+
+            box.style.left = a * 40 + "px";
+            box.style.top = top;
+            box.style.background = color;
+
+        };
+
+        if (color === "purple") {
+            color = "white"
+        }
+        else if (color === "white") {
+            color = "purple"
+        }
 
     }
 
@@ -244,7 +261,7 @@ NodeList
         let newDiv = document.createElement("div");
         newDiv.classList.add("testDiv");
         parent.appendChild(newDiv);
-        return;
+        return (newDiv);
     }
 
 
