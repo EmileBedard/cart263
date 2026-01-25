@@ -269,6 +269,11 @@ NodeList
         return (newDiv);
     }
 
+    let p3boxhtml = document.createElement('img');
+    p3boxhtml.src = "task-2-images/part-three-grid1.png"
+
+    let p3boxesbrowser = document.createElement('img');
+    p3boxesbrowser.src = "task-2-images/part-three-gridsofboxes-withbonus.png"
 
     /***EXPLANATION::
      * here every time the first loop starts it sets the hight with the css in line "top" attribute. Then draws a row according to the picked color and finished the row loop before moving the top a bit down and restarting again.
@@ -324,6 +329,11 @@ NodeList
 
         };
     }
+
+    let p3NewBoxHtml = document.createElement('img');
+    p3NewBoxHtml.src = "task-2-images/part-three-grid2-123withModuloOp.png"
+
+    p3boxesbrowser.src = "task-2-images/part-three-gridsofboxes-withbonus.png"
 
 
     /***EXPLANATION::
