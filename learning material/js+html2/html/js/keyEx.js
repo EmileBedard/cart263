@@ -7,7 +7,7 @@ window.onload = function () {
     // anonymous function here
     window.addEventListener("keydown", function (e) {
         if (e.key === "ArrowRight") {
-            console.log(parseInt(boxA.style.left))
+
             let currentPosition = parseInt(boxA.style.left);
 
             boxA.style.left = currentPosition + speedX + "px";
