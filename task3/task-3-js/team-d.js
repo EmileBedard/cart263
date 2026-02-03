@@ -4,7 +4,7 @@ function setup_D() {
   console.log("in d");
   /**************************************************** */
   //get the buttons
-  activateButtons(`#TEAM_D`, "ani_canvD",aniA,aniB,aniC,aniD);
+  activateButtons(`#TEAM_D`, "ani_canvD", aniA, aniB, aniC, aniD);
 
   function aniA(parentCanvas) {
     console.log("in ani-A -teamD");
@@ -16,7 +16,7 @@ function setup_D() {
   /****************ANI B ************************************ */
   /**************** TASK *******************************************
    * YOU CAN USE ALL NOTES --- and see my examples in team-h.js for inspiration and possibly help:).
-   * 1: create a creatve, visual pattern using text, divs as shapes, images ... 
+   * 1: create a creative, visual pattern using text, divs as shapes, images ... 
    * 2: add in mouseover event listener(s) somewhere to make the sketch interactive
    *
    * NOTE::: PLEASE::: if you add any custom css PLEASE use the style.css and prefix any class names with your team label
@@ -28,8 +28,8 @@ function setup_D() {
    * **/
 
   function aniB(parentCanvas) {
-      console.log("in ani-B -teamD");
-    
+    console.log("in ani-B -teamD");
+
   }
   /****************ANI C ************************************ */
   /** PUT ALL YOUR CODE FOR INTERACTIVE PATTERN C INSIDE HERE */
@@ -52,7 +52,7 @@ function setup_D() {
    */
 
   function aniC(parentCanvas) {
-      console.log("in ani-C -teamD");
+    console.log("in ani-C -teamD");
 
     /*** THIS IS THE CALLBACK FOR KEY DOWN (* DO NOT CHANGE THE NAME *..) */
     windowKeyDownRef = function (e) {
@@ -86,8 +86,8 @@ function setup_D() {
    * remember you can define other functions inside....
    * Do not change any code above or the HTML markup.
    * **/
-   function aniD(parentCanvas) {
+  function aniD(parentCanvas) {
     console.log("in ani-D -teamD");
-    }
+  }
 
 }
