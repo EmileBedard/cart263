@@ -157,7 +157,42 @@ function setup_B() {
   function aniC(parentCanvas) {
     console.log("in ani-C -teamB");
 
+    // selects the canvas and stores it in a variable
     let can = document.getElementById("ani_canvB_C")
+
+    // gets the bounding info of the canvas zone
+    let bounds = can.getBoundingClientRect();
+    console.log(bounds)
+
+    // info for the base grid
+    let shapeNb = 25;
+    let shapeRows = 5;
+    let shapeCols = 5;
+
+    // base grid nested for loop
+    for (let i = 0; i < shapeCols; i++) {
+
+      let shape = document.createElement("div");
+      shape.classList.add("TEAM_B_shape");
+      shape.style.width = bounds.width / 5 + "px"
+      shape.style.height = bounds.height / 5 + "px"
+      can.appendChild(shape);
+      let topDist = i * bounds.height / 5 + "px"
+      shape.style.top = topDist
+
+      for (let y = 0; y < shapeRows; y++) {
+        let shape = document.createElement("div");
+        shape.classList.add("TEAM_B_shape");
+        shape.style.width = bounds.width / 5 + "px"
+        shape.style.height = bounds.height / 5 + "px"
+        can.appendChild(shape);
+        shape.style.top = topDist
+        shape.style.left = y * bounds.width / 5 + "px"
+      }
+
+    }
+
+    // text to explain the different keys
     let text = document.createElement("div")
     text.innerHTML = "<h4>'C' for Chaos & 'O' for Order</h4>";
     text.classList.add("TEAM_B_text");
@@ -166,14 +201,90 @@ function setup_B() {
     /*** THIS IS THE CALLBACK FOR KEY DOWN (* DO NOT CHANGE THE NAME *..) */
     windowKeyDownRef = function (e) {
 
-      console.log(e);
-      console.log("b-down");
+      if (e.key === "c") {
+
+        for (let i = 0; i < shapeNb; i++) {
+
+
+
+          let shape = document.createElement("div");
+          shape.classList.add("TEAM_B_chaosShape");
+          shape.style.width = Math.random() * 30 + "px"
+          shape.style.height = (bounds.bottom - bounds.top) / 30 + "px"
+          shape.style.left = (Math.random() * ((bounds.right - 30) - bounds.left)) + "px"; // formula found on stackoverflow: https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range
+          shape.style.top = (Math.random() * ((bounds.bottom - 30) - bounds.top)) + "px";
+          can.appendChild(shape)
+
+        }
+
+      }
+
+      if (e.key === "o") {
+
+        // info for the orderly grid
+        let vertical = 10
+        let horizontal = 10
+
+        // nested for loop for the order grid.
+        for (let i = 0; i < vertical; i++) {
+
+          let shape = document.createElement("div");
+          shape.classList.add("TEAM_B_orderShape");
+          shape.style.width = "30px"
+          shape.style.height = "30px"
+          let topDist = i * 30 + (((bounds.bottom - bounds.top) / 5) / 2) + "px"
+          let leftOffst = (((bounds.right - bounds.left) / 5) / 2)
+          shape.style.top = topDist
+          shape.style.left = leftOffst + "px"
+          can.appendChild(shape);
+
+          for (let y = 0; y < horizontal; y++) {
+            let shape = document.createElement("div");
+            shape.classList.add("TEAM_B_orderShape");
+            shape.style.width = "30px"
+            shape.style.height = "30px"
+            can.appendChild(shape);
+            shape.style.top = topDist
+            shape.style.left = y * 30 + leftOffst + "px"
+          }
+
+        }
+
+      }
     };
 
     /*** THIS IS THE CALLBACK FOR KEY UP (*DO NOT CHANGE THE NAME..) */
     windowKeyUpRef = function (e) {
-      console.log(e.key);
-      console.log("b-up");
+
+      // nested for loop for the base grid to hide what we already drew.
+      for (let i = 0; i < shapeCols; i++) {
+
+        let shape = document.createElement("div");
+        shape.classList.add("TEAM_B_shape");
+        shape.style.width = bounds.width / 5 + "px"
+        shape.style.height = bounds.height / 5 + "px"
+        can.appendChild(shape);
+        let topDist = i * bounds.height / 5 + "px"
+        shape.style.top = topDist
+
+        for (let y = 0; y < shapeRows; y++) {
+          let shape = document.createElement("div");
+          shape.classList.add("TEAM_B_shape");
+          shape.style.width = bounds.width / 5 + "px"
+          shape.style.height = bounds.height / 5 + "px"
+          can.appendChild(shape);
+          shape.style.top = topDist
+          shape.style.left = y * bounds.width / 5 + "px"
+        }
+
+      }
+
+      // text to explain the different keys
+      let text = document.createElement("div")
+      text.innerHTML = "<h4>'C' for Chaos & 'O' for Order <br> HOLD FOR MORE CHAOS</h4>";
+      text.classList.add("TEAM_B_text");
+      can.appendChild(text);
+
     };
     //DO NOT REMOVE
     window.addEventListener("keydown", windowKeyDownRef);

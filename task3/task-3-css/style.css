@@ -184,6 +184,33 @@ h5 {
   padding: 2px;
 }
 
+.TEAM_B_shape {
+  position: absolute;
+  background-color: black;
+  border-color: white;
+  border-style: solid;
+  border-width: 5px;
+
+}
+
+.TEAM_B_chaosShape {
+  position: absolute;
+  background-color: brown;
+  border-color: gold;
+  border-style: double;
+  border-width: 5px;
+
+}
+
+.TEAM_B_orderShape {
+  position: absolute;
+  background-color: darkblue;
+  border-color: lightblue;
+  border-style: dashed;
+  border-width: 3px;
+
+}
+
 /*CSS TEAM H**/
 
 .TEAM_H_box {
