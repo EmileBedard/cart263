@@ -279,7 +279,7 @@ function setup_B() {
 
       }
 
-      // text to explain the different keys
+      // text to explain the different keys + the hold options appear here
       let text = document.createElement("div")
       text.innerHTML = "<h4>'C' for Chaos & 'O' for Order <br> HOLD FOR MORE CHAOS</h4>";
       text.classList.add("TEAM_B_text");
