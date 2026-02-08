@@ -37,7 +37,6 @@ function setup_B() {
         back.style.height = `187.5px`;
         parent.appendChild(back);
         index++
-        console.log(back.classList)
         back.style.left = ((r + 1) * 187.5) - 187.5 + "px";
         back.style.top = ((e + 1) * 187.5) - 187.5 + "px";
       }
@@ -53,7 +52,7 @@ function setup_B() {
         d.style.width = `20px`;
         d.style.height = `20px`;
         parent.appendChild(d);
-        console.log()
+
 
         d.style.left = (i + 1) * 25 + "px";
         d.style.top = (j + 1) * 25 + "px";
@@ -160,14 +159,15 @@ function setup_B() {
 
     /*** THIS IS THE CALLBACK FOR KEY DOWN (* DO NOT CHANGE THE NAME *..) */
     windowKeyDownRef = function (e) {
-      //code for key down in here
+      let can = document.querySelector("ani_canvB_C")
+
       console.log(e);
       console.log("b-down");
     };
 
     /*** THIS IS THE CALLBACK FOR KEY UP (*DO NOT CHANGE THE NAME..) */
     windowKeyUpRef = function (e) {
-      console.log(e);
+      console.log(e.key);
       console.log("b-up");
     };
     //DO NOT REMOVE
