@@ -173,6 +173,17 @@ h5 {
   margin: 1px;
 }
 
+.TEAM_B_text {
+  font-size: 16px;
+  color: white;
+  position: absolute;
+  left: 90px;
+  background-color: rgba(30, 100, 200);
+  display: inline-block;
+  margin: 2px;
+  padding: 2px;
+}
+
 /*CSS TEAM H**/
 
 .TEAM_H_box {

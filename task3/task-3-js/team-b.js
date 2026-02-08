@@ -157,9 +157,14 @@ function setup_B() {
   function aniC(parentCanvas) {
     console.log("in ani-C -teamB");
 
+    let can = document.getElementById("ani_canvB_C")
+    let text = document.createElement("div")
+    text.innerHTML = "<h4>'C' for Chaos & 'O' for Order</h4>";
+    text.classList.add("TEAM_B_text");
+    can.appendChild(text);
+
     /*** THIS IS THE CALLBACK FOR KEY DOWN (* DO NOT CHANGE THE NAME *..) */
     windowKeyDownRef = function (e) {
-      let can = document.querySelector("ani_canvB_C")
 
       console.log(e);
       console.log("b-down");
