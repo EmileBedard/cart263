@@ -133,6 +133,53 @@ function setup_B() {
   function aniB(parentCanvas) {
     console.log("in ani-B -teamB");
 
+    // Set canvas bg colour +position
+    parentCanvas.style.backgroundColor = "rgb(177, 194, 231)";//bg background so you can see what we working with+squares
+    parentCanvas.style.position = "relative"; //to emile/dyna: maybe the circle issues with the first one was because we use absolute instead of relative?
+
+    //random number ( this is what pick square size+random position+colour )
+    function random(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    //create a square div 
+    function createSquare(colorClass) {
+      const square = document.createElement("div");
+      square.className = colorClass; //choose a color from palette beore
+
+      //assign random width and height to square
+      const size = random(20, 60);
+      square.style.width = size + "px";
+      square.style.height = size + "px";
+
+      //random position inside the container aka the parent
+      const x = random(0, parentCanvas.clientWidth - size);//so no  overflow out canvas but could i remove for more chaoctic feel?
+      const y = random(0, parentCanvas.clientHeight - size);
+      square.style.left = x + "px";
+      square.style.top = y + "px";
+
+      parentCanvas.appendChild(square);
+    }
+
+    //draw random squares using colour classes made from first exercise
+    function drawRandomSquares(amount) {
+      const colorClasses = [
+        "TEAM_B_backSquare0",
+        "TEAM_B_backSquare1",
+        "TEAM_B_backSquare2",
+        "TEAM_B_backSquare3",
+      ];
+      //loop  to create multiple squares.
+      for (let i = 0; i < amount; i++) {
+        const colorClass = colorClasses[Math.floor(random(0, colorClasses.length))];//random pick colour
+        createSquare(colorClass);
+      }
+    }
+
+    //mouseover will be doing random squares
+    parentCanvas.addEventListener("mouseover", function () {
+      drawRandomSquares(10);//add 10 new square each time
+    });
   }
   /****************ANI C ************************************ */
   /** PUT ALL YOUR CODE FOR INTERACTIVE PATTERN C INSIDE HERE */
