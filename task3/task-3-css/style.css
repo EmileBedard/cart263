@@ -211,6 +211,13 @@ h5 {
 
 }
 
+.TEAM_B_ANI_D_cell {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  background: red;
+}
+
 /*CSS TEAM H**/
 
 .TEAM_H_box {
