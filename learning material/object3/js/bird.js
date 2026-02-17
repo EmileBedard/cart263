@@ -1,6 +1,10 @@
-class Bird {
+class Bird extends Animal {
     // Create a new bird object that moves to the right
     constructor(x, y, width, height) {
+
+        //calls the constructor of superclass
+        super(x, y, width, height)
+
         this.x = x;
         this.y = y;
         this.width = width;
@@ -10,24 +14,25 @@ class Bird {
         this.animalBody = document.createElement("div");
     }
 
-    // Move the bird according to its velocity
-    move() {
-        this.x += this.vx;
-        this.y += this.vy;
-        //update the actual div...
-        this.animalBody.style.left = this.x + "px";
-        this.animalBody.style.top = this.y + "px";
-    }
+    // // Move the bird according to its velocity
+    // move() {
+    //     this.x += this.vx;
+    //     this.y += this.vy;
+    //     //update the actual div...
+    //     this.animalBody.style.left = this.x + "px";
+    //     this.animalBody.style.top = this.y + "px";
+    // }
 
-    // Wrap the bird if it reaches the right edge
-    wrap() {
-        if (this.x > window.innerWidth) {
-            this.x -= window.innerWidth;
-        }
-    }
+    // // Wrap the bird if it reaches the right edge
+    // wrap() {
+    //     if (this.x > window.innerWidth) {
+    //         this.x -= window.innerWidth;
+    //     }
+    // }
 
     // Display the bird as a ellipse
     renderAnimal() {
+        super.renderAnimal();
         this.animalBody.classList.add("animal");
         this.animalBody.style.width = this.width + "px";
         this.animalBody.style.height = this.height + "px";
@@ -36,6 +41,6 @@ class Bird {
         this.animalBody.style.borderRadius = this.width + "px";
         this.animalBody.style.backgroundColor = `rgb(106, 90, 205)`;
         //add to the DOM
-        document.getElementsByClassName("grass")[0].appendChild(this.animalBody);
+        document.getElementsByClassName("sky")[0].appendChild(this.animalBody);
     }
 }
