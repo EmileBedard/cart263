@@ -1,5 +1,6 @@
 /* Space Mono styling from google font website */
 
+
 .space-mono-regular {
     font-family: "Space Mono", monospace;
     font-weight: 400;
@@ -22,4 +23,86 @@
     font-family: "Space Mono", monospace;
     font-weight: 700;
     font-style: italic;
+}
+
+
+
+/* styling for main body */
+
+
+body {
+    background: #EAE3D7;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Space Mono", monospace;
+    font-weight: 700;
+    font-style: normal;
+    color: black;
+
+    margin-bottom: 10px;
+
+}
+
+.banner {
+    background: #EAE3D7;
+    border-bottom: 3px solid black;
+}
+
+.main-zone {
+    height: 80vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.bike-element {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    transition: transform 0.4s cubic-bezier(0.23, -0.66, 0.52, 1);
+}
+
+.bike-element img {
+    width: 35vw;
+
+}
+
+.bike-element:hover {
+    transform: translate(20px);
+}
+
+.right-button-zone {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.left-button-zone {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+button {
+    background-color: #FF5100;
+    color: white;
+    padding: 3px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    font-family: "Space Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
 }
