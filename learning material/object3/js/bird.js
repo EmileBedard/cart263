@@ -34,6 +34,7 @@ class Bird extends Animal {
 
     // Display the bird as a ellipse
     renderAnimal() {
+        console.log("render move!");
         super.renderAnimal();
         this.animalBody.classList.add("animal");
         this.animalBody.style.width = this.width + "px";

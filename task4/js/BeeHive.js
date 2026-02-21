@@ -8,6 +8,15 @@ class BeeHive {
     this.beehiveDiv = document.createElement("div");
     this.stripes = [];
     this.holeDiv = document.createElement("div");
+    this.rotation = 0; // actual hive rotation
+    this.angle = 1; // x in sine function
+  }
+
+  rotateHives() {
+    this.rotation = Math.sin(this.angle) * 10; // last multiplier = amplitude
+    this.angle += 0.02; // rythm
+
+    this.beehiveDiv.style.rotate = this.rotation + "deg"; //updates the rotation of the hives
   }
 
   renderBeeHive() {
@@ -17,6 +26,7 @@ class BeeHive {
     this.beehiveDiv.style.left = this.x + "px";
     this.beehiveDiv.style.top = this.y + "px";
     this.beehiveDiv.style.background = `rgb(${this.color.r},${this.color.g},${this.color.b})`;
+    this.beehiveDiv.style.rotate = this.rotation + "deg";
 
     this.beehiveDiv.innerHTML = "";
     this.stripes = [];
@@ -36,4 +46,6 @@ class BeeHive {
     const sky = document.querySelector(".sky");
     (sky || grass)?.appendChild(this.beehiveDiv);
   }
+
+
 }
