@@ -12,23 +12,25 @@ class Bird extends Animal {
         this.vx = Math.random() * 5 + 1;
         this.vy = 0;
         this.animalBody = document.createElement("div");
+
+
+        this.originalY = this.y;
+
+        //ONLY in the Bird class : new variables
+        this.angle = 0;
+        this.sleepiness = 0.1;
     }
 
-    // // Move the bird according to its velocity
-    // move() {
-    //     this.x += this.vx;
-    //     this.y += this.vy;
-    //     //update the actual div...
-    //     this.animalBody.style.left = this.x + "px";
-    //     this.animalBody.style.top = this.y + "px";
-    // }
+    // override A - p1
+    // Move the Animal according to its velocity
+    move() {
+        //console.log("go");
 
-    // // Wrap the bird if it reaches the right edge
-    // wrap() {
-    //     if (this.x > window.innerWidth) {
-    //         this.x -= window.innerWidth;
-    //     }
-    // }
+        this.y = this.originalY + Math.sin(this.angle) * 8
+        this.angle += 0.05;
+
+        super.move();
+    }
 
     // Display the bird as a ellipse
     renderAnimal() {
