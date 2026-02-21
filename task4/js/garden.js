@@ -56,6 +56,8 @@ window.onload = function () {
     beehives.push(new BeeHive(100, 100, 130, { r: 244, g: 196, b: 110 }));
     beehives.forEach((hive) => hive.renderBeeHive());
 
+
+
     //create some flowers
     for (let i = 0; i < garden.numFlowers; i++) {
       // Create variables for our arguments for clarity

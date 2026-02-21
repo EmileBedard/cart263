@@ -10,6 +10,7 @@ class BeeHive {
     this.holeDiv = document.createElement("div");
     this.rotation = 0; // actual hive rotation
     this.angle = 1; // x in sine function
+    this.beeCounter = 0;
   }
 
   rotateHives() {
@@ -38,6 +39,8 @@ class BeeHive {
       this.beehiveDiv.appendChild(stripe);
       this.stripes.push(stripe);
     }
+
+    this.holeDiv.innerHTML = `<h3>${this.beeCounter}</h3>`;
 
     this.holeDiv.classList.add("beehive__hole");
     this.beehiveDiv.appendChild(this.holeDiv);
