@@ -79,9 +79,9 @@ h3 {
 
 }
 
-.bike-element:hover {
+/* .bike-element:hover {
     transform: translate(20vw);
-}
+} */
 
 .tripod-element {
     position: absolute;

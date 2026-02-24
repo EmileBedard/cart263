@@ -10,17 +10,21 @@ window.onload = function () {
 
 
     leftButton.addEventListener("mouseover", function () {
-        console.log("over!")
-
         tripod.style.transform = "translate(21vw)";
-        console.log(tripod.style.transform)
+    })
 
+    bike.addEventListener("mouseover", function () {
+        tripod.style.transform = "translate(21vw)";
+        bike.style.transform = "translate(20px)";
     })
 
     leftButton.addEventListener("mouseout", function () {
-        console.log("out!")
         tripod.style.transform = "none";
+    })
 
+    bike.addEventListener("mouseout", function () {
+        tripod.style.transform = "none";
+        bike.style.transform = "none";
 
     })
 
