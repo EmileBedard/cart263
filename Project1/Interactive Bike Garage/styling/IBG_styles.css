@@ -47,6 +47,7 @@ h3 {
     font-family: "Space Mono", monospace;
     font-weight: 700;
     font-style: normal;
+    font-size: 30px;
     color: black;
 
     margin-bottom: 10px;
@@ -82,22 +83,48 @@ h3 {
     transform: translate(20px);
 }
 
+.tripod-element {
+    position: absolute;
+    left: -4vw;
+    display: flex;
+
+}
+
+.tripod-element img {
+    width: 25vw;
+}
+
+.shop-element {
+    position: absolute;
+    right: -7vw;
+    /* bottom: 6vh; */
+    display: flex;
+
+}
+
+.shop-element img {
+    width: 28vw;
+}
+
 .right-button-zone {
     display: flex;
     justify-content: center;
     align-content: center;
+
 }
 
 .left-button-zone {
     display: flex;
     justify-content: center;
     align-content: center;
+
 }
 
 button {
     background-color: #FF5100;
     color: white;
-    padding: 3px 10px;
+    padding: 5px 25px;
+    z-index: 3;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -105,4 +132,5 @@ button {
     font-family: "Space Mono", monospace;
     font-weight: 400;
     font-style: normal;
+    font-size: 20px;
 }
