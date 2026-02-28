@@ -76,12 +76,7 @@ h3 {
 
 .bike-element img {
     width: 35vw;
-
 }
-
-/* .bike-element:hover {
-    transform: translate(20vw);
-} */
 
 .tripod-element {
     position: absolute;
@@ -96,10 +91,9 @@ h3 {
 
 .shop-element {
     position: absolute;
-    right: -7vw;
-    /* bottom: 6vh; */
+    right: -28vw;
     display: flex;
-
+    transition: transform 0.5s ease-in-out;
 }
 
 .shop-element img {

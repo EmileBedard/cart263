@@ -18,6 +18,10 @@ window.onload = function () {
         bike.style.transform = "translate(20px)";
     })
 
+    rightButton.addEventListener("mouseover", function () {
+        shop.style.transform = "translate(-21vw)";
+    })
+
     leftButton.addEventListener("mouseout", function () {
         tripod.style.transform = "none";
     })
@@ -25,7 +29,10 @@ window.onload = function () {
     bike.addEventListener("mouseout", function () {
         tripod.style.transform = "none";
         bike.style.transform = "none";
+    })
 
+    rightButton.addEventListener("mouseout", function () {
+        shop.style.transform = "none";
     })
 
 
