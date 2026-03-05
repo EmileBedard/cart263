@@ -8,8 +8,8 @@ class Bike {
 
     renderbike() {
         console.log("bike_rendered!");
-        this.bike.classList.add("bike");
+        this.bike.classList.add("bikeObject");
         //add to the DOM
-        document.querySelector("selector").appendChild(this.bike);
+        document.querySelector(".main-zone").appendChild(this.bike);
     }
 }

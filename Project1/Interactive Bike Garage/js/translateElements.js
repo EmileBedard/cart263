@@ -1,5 +1,4 @@
-window.onload = function () {
-
+window.addEventListener('load', function () {
     let leftButton = document.getElementById("registerPartsButton");
     let rightButton = document.getElementById("maintenanceButton");
     let bike = document.querySelector(".bike-element");
@@ -38,8 +37,4 @@ window.onload = function () {
     })
 
 
-    // let bike = document.querySelector(".bike-element");
-    // bike.addEventListener("click", function () {
-    //     bike.style.transform = "none";
-    // });
-}
+})
