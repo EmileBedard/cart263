@@ -1,0 +1,75 @@
+.bikes-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    padding: 20px;
+    gap: 20px;
+}
+
+.addBikeButton {
+    margin: 30px;
+    width: fit-content;
+}
+
+.addBikeButton button {
+    position: relative;
+    background-color: #E0D5C3;
+    color: #030033;
+    padding: 50px;
+    z-index: 3;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Space Mono", monospace;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 40px;
+}
+
+.addBikeButton button img {
+    width: 250px;
+}
+
+button p {
+    padding: 20px 30px;
+}
+
+.bikeObject {
+    margin: 30px;
+    width: fit-content;
+}
+
+.bikeObject button {
+    position: relative;
+    background-color: #E0D5C3;
+    color: white;
+    padding: 50px;
+    z-index: 3;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Space Mono", monospace;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 40px;
+}
+
+.bikeObject button img {
+    width: 250px;
+}
+
+.bikeObject button p {
+    padding: 20px 30px;
+}

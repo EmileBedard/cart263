@@ -3,13 +3,28 @@ class Bike {
         this.name = name;
         this.type = type;
         this.color = color;
-        this.bike = document.createElement("div");
     }
 
+
+
     renderbike() {
+
+        this.bike = document.createElement("div");
+        this.bike.classList.add("bikeObject")
+        this.bike.id = (`bike${garage.bikes.length}`);
+
+        console.log(this.bike.id);
+
+        this.bikeButton = document.createElement("button");
+        this.bikeButton.innerHTML = `<p>${this.name}</p> <img src="assets/small bike element white.svg" alt="bike">`;
+        this.bikeButton.style.backgroundColor = `${this.color}`;
+
+
+        let menu = document.querySelector(".bikes-menu");
+
+        menu.appendChild(this.bike);
+        this.bike.appendChild(this.bikeButton);
+
         console.log("bike_rendered!");
-        this.bike.classList.add("bikeObject");
-        //add to the DOM
-        document.querySelector(".main-zone").appendChild(this.bike);
     }
 }
