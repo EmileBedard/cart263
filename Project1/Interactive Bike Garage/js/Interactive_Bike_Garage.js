@@ -10,14 +10,19 @@ window.onload = function () {
 
 
     let addBikeButton = document.querySelector(".addBikeButton");
+    let displayBikeButton = document.querySelector(".applyBikeButton");
 
+    displayBikeButton.addEventListener("click", function () {
+
+
+    })
 
     addBikeButton.addEventListener("click", function () {
 
         garage.numBikes += 1;
         console.log("added1bike");
 
-        let newBike = new Bike("MyBike", "Road", "blue");
+        let newBike = new Bike("Opus Vivace", "Road", "red");
 
         garage.bikes.push(newBike);
         newBike.renderbike();
