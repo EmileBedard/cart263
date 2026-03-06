@@ -58,6 +58,13 @@ h3 {
 .banner {
     background: #EAE3D7;
     border-bottom: 3px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner h3 {
+    width: fit-content;
 }
 
 .main-zone {

@@ -73,3 +73,69 @@ button p {
 .bikeObject button p {
     padding: 20px 30px;
 }
+
+.bikeDetailsWindow {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+    z-index: 5;
+
+    background-color: #FF5100;
+    color: white;
+
+    border-radius: 20px;
+    font-family: "Space Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 30px;
+}
+
+.bikeDetailsWindow {
+    padding: 40px;
+    display: none;
+}
+
+input[type=text],
+select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    margin-bottom: 20px;
+    display: inline-block;
+    font-family: "Space Mono", monospace;
+    border: 2px solid grey;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    margin-top: 40px;
+    display: inline-block;
+    font-family: "Space Mono", monospace;
+    border: none;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: white;
+    background-color: #030033;
+    cursor: pointer;
+}
+
+
+.bikeDetailsWindow h3 {
+    color: white;
+    font-family: "Space Mono", monospace;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 40px;
+    margin: 0;
+
+}
+
+.bikeDetailsWindow label {
+    font-size: 20px;
+}

@@ -50,9 +50,21 @@
             </button>
         </div>
 
+        <!-- bike details window that pop's up when user decides to click on add bike -->
         <div class="bikeDetailsWindow">
-            <label for="fname">First name:</label>
-            <input type="text">
+            <h3>Enter bike details</h3>
+            <form id="bikeForm">
+                <label for="bikeName">Bike Name:</label>
+                <input type="text" id="nameInput" placeholder="Your bike name.." required>
+
+                <label for="bikeType">Bike Type:</label>
+                <input type="text" id="typeInput" placeholder="Road, Gravel, mtb... " required>
+
+                <label for="bikeColor">Bike Color:</label>
+                <input type="color" id="colorInput" required>
+
+                <input type="submit" id="submitInput" id="applyBikeButton" value="Submit">
+            </form>
         </div>
 
     </div>
