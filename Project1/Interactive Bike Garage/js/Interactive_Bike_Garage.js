@@ -7,6 +7,7 @@ let garage = {
 
 
 window.onload = function () {
+
     loadAllBikes();
 
     let addBikeButton = document.querySelector(".addBikeButton");
@@ -19,7 +20,9 @@ window.onload = function () {
 
     let bikeForm = document.getElementById("bikeForm");
 
-    let key = 0
+    let keys = Object.keys(localStorage);
+    console.log(keys);
+
 
     bikeForm.addEventListener("submit", function (event) {
         event.preventDefault();
@@ -28,19 +31,20 @@ window.onload = function () {
         let type = document.getElementById("typeInput").value;
         let color = document.getElementById("colorInput").value;
 
+        let key = keys.length + 1;
+
         console.log(name, type, color);
 
         let bikeData = {
-            bikename: name,
-            biketype: type,
-            bikecolor: color
+            bikeName: name,
+            bikeType: type,
+            bikeColor: color
         };
 
         popWindow.style.display = "none";
 
         localStorage.setItem(key, JSON.stringify(bikeData));
 
-        key += 1;
 
         garage.numBikes += 1;
         console.log("added1bike");
@@ -66,6 +70,7 @@ window.onload = function () {
 
     function loadAllBikes() {
         let keys = Object.keys(localStorage);
+        console.log(keys);
 
         for (let i = 0; i < keys.length; i++) {
             let key = keys[i];
@@ -73,11 +78,10 @@ window.onload = function () {
             let bikeDataString = localStorage.getItem(key);
             let bikeData = JSON.parse(bikeDataString);
 
-            // 4. On crée l'instance et on l'affiche
             let newBike = new Bike(
-                bikeData.bikename,
-                bikeData.biketype,
-                bikeData.bikecolor
+                bikeData.bikeName,
+                bikeData.bikeType,
+                bikeData.bikeColor
             );
 
             garage.bikes.push(newBike);
