@@ -15,7 +15,7 @@ window.onload = function () {
     let addBikeButton = document.querySelector(".addBikeButton");
     let popWindow = document.querySelector(".bikeDetailsWindow")
 
-    if (addBikeButton) {
+    if (addBikeButton) { //just to make sure it does exist before attaching eventListener
         addBikeButton.addEventListener("click", function () {
             popWindow.style.display = "inline-block";
         });
@@ -23,7 +23,7 @@ window.onload = function () {
 
     let bikeForm = document.getElementById("bikeForm");
 
-    if (bikeForm) {
+    if (bikeForm) { //just to make sure it does exist before attaching eventListener
         bikeForm.addEventListener("submit", function (event) {
             event.preventDefault();
 
@@ -31,10 +31,7 @@ window.onload = function () {
             let type = document.getElementById("typeInput").value;
             let color = document.getElementById("colorInput").value;
 
-            let key = keys.length + 1;
-            console.log(key);
-
-            console.log(name, type, color);
+            let key = Object.keys(localStorage).length + 1;
 
             let bikeData = {
                 bikeName: name,
@@ -48,7 +45,6 @@ window.onload = function () {
 
 
             garage.numBikes += 1;
-            console.log("added1bike");
 
             loadAllBikes();
 
@@ -60,9 +56,7 @@ window.onload = function () {
     function loadAllBikes() {
 
         let keys = Object.keys(localStorage);
-        console.log(keys);
         keys.sort(); // used here to sort in order all the stored data in local storage
-        console.log(keys);
 
         let menu = document.querySelector(".bikes-menu");
 
@@ -89,7 +83,6 @@ window.onload = function () {
 
                 garage.bikes.push(newBike);
                 newBike.renderbike(key);
-                console.log(key);
 
             }
         }

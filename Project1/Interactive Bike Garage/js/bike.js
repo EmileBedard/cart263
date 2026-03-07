@@ -13,8 +13,6 @@ class Bike {
         this.bike.classList.add("bikeObject")
         this.bike.id = (`bike${id}`);
 
-        console.log(this.bike.id);
-
         this.bikeButton = document.createElement("button");
         this.bikeButton.innerHTML = `<p>${this.name}</p> <img src="assets/small bike element white.svg" alt="bike">`;
         this.bikeButton.style.backgroundColor = `${this.color}`;
@@ -24,7 +22,5 @@ class Bike {
 
         menu.appendChild(this.bike);
         this.bike.appendChild(this.bikeButton);
-
-        console.log("bike_rendered!");
     }
 }
