@@ -15,6 +15,8 @@
     <meta name="copyright" content="copyright Emile Bedard, project 1 CART 263, 2025">
 
     <title>Interactive Bike Garage</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+
 
 
     <link rel="stylesheet" href="styling/IBG_styles.css">
@@ -28,7 +30,9 @@
         rel="stylesheet">
 
     <script src="js/bike.js" defer></script>
-    <script src="js/Interactive_Bike_Garage.js" defer></script>
+    <script src="js/createBikes.js" defer></script>
+    <script src="js/registerBikeParts.js" defer></script>
+
 </head>
 
 <body>
@@ -43,6 +47,9 @@
 
     <!-- main zone for all bicycles buttons and the ADD BIKE button-->
     <div class="bikes-menu">
+
+        <h2 class="bikes-menu-instructions">Add a new bike or select one to register parts</h2>
+
         <div class="addBikeButton">
             <button>
                 <p>ADD BIKE</p>
@@ -62,6 +69,61 @@
 
                 <label for="bikeColor">Bike Color:</label>
                 <input type="color" id="colorInput" required>
+
+                <input type="submit" id="submitInput" id="applyBikeButton" value="Submit">
+            </form>
+        </div>
+
+    </div>
+    <div class="partsZone">
+
+        <div class="infographic-zone">
+            <h3 id="infographic-name">ANATOMY OF ...</h3>
+            <img src="assets/anatomy-of-a-bike-infographic.png" alt="bike parts infographic">
+        </div>
+
+        <div class="toolbox">
+            <h3 class="toolbox-title">TOOLBOX</h3>
+            <h3 class="bike-name-placeholder">NAME PLACEHOLDER</h3>
+            <form>
+                <label for="bikeName">Bike Name:</label>
+                <input type="text" id="nameInput" placeholder="Your bike name..">
+
+                <label for="bikeType">Bike Type:</label>
+                <input type="text" id="typeInput" placeholder="Road, Gravel, mtb... ">
+
+                <label for="bikeHandlebars">Handlebars:</label>
+                <input type="text" id="handlebarsInput" placeholder="dropbars, flatbars ...">
+
+                <label for="bikeFrame">Frame:</label>
+                <input type="text" id="frameInput" placeholder="frame brand ? carbon? steel? aluminium or titanium?">
+
+                <label for="bikeSize">Size:</label>
+                <input type="text" id="sizeInput" placeholder="length of the seat tube, measured in cm.">
+
+                <label for="bikeWheels">Wheels:</label>
+                <input type="text" id="wheelsInput" placeholder="700c? 24/28/32mm ?">
+
+                <label for="bikeTires">Tires:</label>
+                <input type="text" id="tiresInput" placeholder="tire brand?">
+
+                <label for="bikeRearDerailleur">Rear Derailleur:</label>
+                <input type="text" id="rearDerailleurInput" placeholder="Shimano ? Sram ? electronic or mechanical?">
+
+                <label for="bikeFrontDerailleur">Front Derailleur:</label>
+                <input type="text" id="frontDerailleurInput" placeholder="Shimano ? Sram ? electronic or mechanical?">
+
+                <label for="bikeCassette">Cassette:</label>
+                <input type="text" id="cassetteInput" placeholder="number of speeds with tooths. ex: 34t/54t">
+
+                <label for="bikePlateau">Plateau:</label>
+                <input type="text" id="plateauInput" placeholder="brand and number of tooths for gear ratio">
+
+                <label for="bikeCranks">Cranks:</label>
+                <input type="text" id="cranksInput" placeholder="brand ? cranklength in mm ?">
+
+                <label for="bikePedals">Pedals:</label>
+                <input type="text" id="pedalsInput" placeholder="flats? clipless? powermeter">
 
                 <input type="submit" id="submitInput" id="applyBikeButton" value="Submit">
             </form>

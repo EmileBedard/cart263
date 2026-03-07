@@ -7,6 +7,16 @@
     gap: 20px;
 }
 
+.bikes-menu-instructions {
+    width: 100vw;
+    text-align: center;
+
+    font-family: "Space Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 30px;
+}
+
 .addBikeButton {
     margin: 30px;
     width: fit-content;
@@ -144,4 +154,94 @@ input[type=submit] {
 
 .bikeDetailsWindow label {
     font-size: 20px;
+}
+
+.partsZone {
+    width: 90vw;
+    margin: 40px auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 40px;
+
+    background: #E3D5BB;
+    border-radius: 40px;
+}
+
+.infographic-zone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.infographic-zone h3 {
+    position: absolute;
+}
+
+.infographic-zone img {
+    width: 100%;
+    max-width: 500px;
+}
+
+.toolbox {
+    background: #C7B393;
+    padding: 40px;
+    border-radius: 30px;
+
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.toolbox-title {
+    justify-content: left;
+    border-bottom: 2px solid white;
+    color: white;
+}
+
+.bike-name-placeholder {
+    position: absolute;
+    left: 35%;
+    top: 9%;
+    margin: 0px;
+    color: white;
+}
+
+.toolbox form {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    column-gap: 0px;
+}
+
+.toolbox input[type=text] {
+    width: 100%;
+
+    padding: 5px;
+    margin: 3px 0;
+    font-family: "Space Mono", monospace;
+    border: 2px solid grey;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.toolbox input[type=submit] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    margin-top: 40px;
+    display: inline-block;
+    font-family: "Space Mono", monospace;
+    border: none;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: white;
+    background-color: #030033;
+    cursor: pointer;
+}
+
+.toolbox label {
+    font-family: "Space Mono", monospace;
+    color: white;
+    width: fit-content;
 }
