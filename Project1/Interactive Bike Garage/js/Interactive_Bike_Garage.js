@@ -1,10 +1,12 @@
 
-//global so bike can access it
+//global variables here so other files can access
+
 let garage = {
     numBikes: 0,
     bikes: [],
 }
 
+let keys = Object.keys(localStorage);
 
 window.onload = function () {
 
@@ -13,83 +15,84 @@ window.onload = function () {
     let addBikeButton = document.querySelector(".addBikeButton");
     let popWindow = document.querySelector(".bikeDetailsWindow")
 
-    addBikeButton.addEventListener("click", function () {
-        popWindow.style.display = "inline-block";
-
-    });
+    if (addBikeButton) {
+        addBikeButton.addEventListener("click", function () {
+            popWindow.style.display = "inline-block";
+        });
+    }
 
     let bikeForm = document.getElementById("bikeForm");
 
-    let keys = Object.keys(localStorage);
-    console.log(keys);
+    if (bikeForm) {
+        bikeForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            let name = document.getElementById("nameInput").value;
+            let type = document.getElementById("typeInput").value;
+            let color = document.getElementById("colorInput").value;
+
+            let key = keys.length + 1;
+            console.log(key);
+
+            console.log(name, type, color);
+
+            let bikeData = {
+                bikeName: name,
+                bikeType: type,
+                bikeColor: color
+            };
+
+            popWindow.style.display = "none";
+
+            localStorage.setItem(key, JSON.stringify(bikeData));
 
 
-    bikeForm.addEventListener("submit", function (event) {
-        event.preventDefault();
+            garage.numBikes += 1;
+            console.log("added1bike");
 
-        let name = document.getElementById("nameInput").value;
-        let type = document.getElementById("typeInput").value;
-        let color = document.getElementById("colorInput").value;
+            loadAllBikes();
 
-        let key = keys.length + 1;
-
-        console.log(name, type, color);
-
-        let bikeData = {
-            bikeName: name,
-            bikeType: type,
-            bikeColor: color
-        };
-
-        popWindow.style.display = "none";
-
-        localStorage.setItem(key, JSON.stringify(bikeData));
+        });
+    };
 
 
-        garage.numBikes += 1;
-        console.log("added1bike");
-
-
-        for (let i = 0; i < storedBikes.length; i++) {
-
-            console.log(storedBike);
-        }
-
-        let indexedBikeArray = JSON.parse(value)
-
-        for (let storedValue of indexedBikeArray) {
-            console.log(storedValue);
-        }
-
-        let newBike = new Bike();
-
-        garage.bikes.push(newBike);
-        newBike.renderbike();
-
-    })
 
     function loadAllBikes() {
+
         let keys = Object.keys(localStorage);
         console.log(keys);
+        keys.sort(); // used here to sort in order all the stored data in local storage
+        console.log(keys);
 
-        for (let i = 0; i < keys.length; i++) {
-            let key = keys[i];
+        let menu = document.querySelector(".bikes-menu");
 
-            let bikeDataString = localStorage.getItem(key);
-            let bikeData = JSON.parse(bikeDataString);
+        //only run through the render all if we have already existing bikes
+        if (keys.length > 0) {
 
-            let newBike = new Bike(
-                bikeData.bikeName,
-                bikeData.bikeType,
-                bikeData.bikeColor
-            );
+            let bikes = document.querySelectorAll(".bikeObject"); // here it prevents doubles and clears the menu before re-rendering all stored bikes
+            bikes.forEach(bike => bike.remove());
 
-            garage.bikes.push(newBike);
-            newBike.renderbike();
+            // garage.bikes = []; // empty bikes array to repush after
+
+            for (let i = 0; i < keys.length; i++) {
+                let key = keys[i];
+
+                let bikeDataString = localStorage.getItem(key);
+                let bikeData = JSON.parse(bikeDataString);
 
 
+                let newBike = new Bike(
+                    bikeData.bikeName,
+                    bikeData.bikeType,
+                    bikeData.bikeColor
+                );
+
+                garage.bikes.push(newBike);
+                newBike.renderbike(key);
+                console.log(key);
+
+            }
         }
     }
-
 
 }

@@ -7,11 +7,11 @@ class Bike {
 
 
 
-    renderbike() {
+    renderbike(id) {
 
         this.bike = document.createElement("div");
         this.bike.classList.add("bikeObject")
-        this.bike.id = (`bike${garage.bikes.length}`);
+        this.bike.id = (`bike${id}`);
 
         console.log(this.bike.id);
 
