@@ -8,6 +8,7 @@
 
     body {
         overflow-x: hidden;
+        height: min-content;
     }
 
     h3 {
@@ -20,22 +21,14 @@
         padding: 10px;
     }
 
-    .erase-memory-button {
-        right: auto;
-        left: auto;
-        top: 28vh;
-        font-size: 12px;
-        text-align: center;
-        width: 75vw;
-        padding: 4px 8px;
-    }
+
 
     /* ---------- HOME PAGE ---------- */
 
     .main-zone {
-        height: auto;
+        height: 70vh;
         grid-template-columns: 1fr;
-        grid-template-rows: 1.3fr 1fr 1.3fr;
+        grid-template-rows: 1fr 1fr 1fr;
         gap: 40px;
         padding: 40px 0;
     }
@@ -43,21 +36,16 @@
     /* hide side illustrations on small screens */
 
     .shop-element {
-        right: 0vw;
-        bottom: -15vh;
+        display: none;
     }
 
-    .shop-element img {
-        width: 60vw;
-    }
 
     .tripod-element {
-        left: -10vw;
-        top: 10vh;
+        display: none;
     }
 
-    .tripod-element img {
-        width: 60vw;
+    .bike-element {
+        transition: none;
     }
 
     .bike-element img {
@@ -103,25 +91,27 @@
     }
 
     /* add bike */
-    .addBikeButton {
-        margin-bottom: 120px;
-    }
+
 
     .addBikeButton button {
-        top: 10vh;
-        font-size: 20px;
-        width: 80vw;
+
+        font-size: 25px;
+        width: 100%;
         height: fit-content;
-        padding: 20px;
-        gap: 40px;
+        padding: 0px;
+        gap: 0px;
+        margin-bottom: 15px;
+
+        align-items: center;
+
+        display: flex;
+        justify-content: center;
     }
 
-    .addBikeButton p {
-        padding: 0px;
-    }
 
     .addBikeButton button img {
-        width: 100px;
+        height: 80%;
+        width: 130px;
     }
 
     /* ---------- POPUP WINDOW ---------- */
