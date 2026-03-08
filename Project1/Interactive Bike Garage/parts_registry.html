@@ -42,6 +42,9 @@
             <a href="index.html">
                 <h3>Interactive Bike Garage</h3>
             </a>
+            <div class="erase-memory-button">
+                <p>ERASE ALL BIKES</p>
+            </div>
         </div>
     </nav>
 
@@ -101,12 +104,12 @@
         <div class="toolbox">
             <h3 class="toolbox-title">TOOLBOX</h3>
             <h3 class="bike-name-placeholder">NAME PLACEHOLDER</h3>
-            <form>
+            <form id="complete-bike-details">
                 <label for="bikeName">Bike Name:</label>
-                <input type="text" id="nameInput" placeholder="Your bike name..">
+                <input type="text" id="toolboxNameInput" placeholder="Your bike name..">
 
                 <label for="bikeType">Bike Type:</label>
-                <input type="text" id="typeInput" placeholder="Road, Gravel, mtb... ">
+                <input type="text" id="toolboxTypeInput" placeholder="Road, Gravel, mtb... ">
 
                 <label for="bikeHandlebars">Handlebars:</label>
                 <input type="text" id="handlebarsInput" placeholder="dropbars, flatbars ...">
@@ -141,7 +144,7 @@
                 <label for="bikePedals">Pedals:</label>
                 <input type="text" id="pedalsInput" placeholder="flats? clipless? powermeter">
 
-                <input type="submit" id="submitInput" id="applyBikeButton" value="Submit">
+                <input type="submit" id="submitToolbox" value="Submit">
             </form>
         </div>
 
