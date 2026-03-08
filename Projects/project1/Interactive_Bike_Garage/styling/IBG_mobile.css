@@ -171,12 +171,28 @@
         width: 100%;
     }
 
-    #empty-frame {
+    .bike-overlay {
+        position: relative;
+        width: 100%;
+        max-width: 900px;
+    }
+
+    .bike-overlay img {
+        width: 100%;
+        height: auto;
+        z-index: 3;
         display: block;
-        margin-top: 60px;
-        width: 30%;
-        height: fit-content;
-        stroke-width: 45px;
+    }
+
+    .bike-overlay svg {
+        position: absolute;
+        z-index: 1;
+        inset: 0;
+        height: 100%;
+        stroke: #030033;
+        fill: none;
+        stroke-width: 40px;
+
     }
 
     /* ---------- TOOLBOX ---------- */

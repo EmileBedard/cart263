@@ -31,6 +31,10 @@ document.addEventListener("click", function (event) {
         partsZone.style.display = "grid";
         partsZone.scrollIntoView({ behavior: "smooth" });
 
+        //also erases the placeholder and reposition the footer properly
+        let footerSpacer = document.querySelector(".empty-placeholder");
+        footerSpacer.style.display = "none";
+
 
     }
 

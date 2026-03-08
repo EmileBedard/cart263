@@ -68,28 +68,6 @@ h3 {
     width: fit-content;
 }
 
-.erase-memory-button {
-    position: absolute;
-    right: 20px;
-    border: black solid 2px;
-    padding: 3px 10px;
-    border-radius: 25px;
-    width: fit-content;
-    font-family: "Space Mono", monospace;
-    font-weight: 700;
-    font-style: normal;
-    font-size: 15px;
-    color: black;
-    transition: background-color 0.2s ease-in-out;
-    cursor: pointer;
-}
-
-.erase-memory-button:hover {
-    color: white;
-    background-color: red;
-    border: none;
-}
-
 .main-zone {
     height: 80vh;
     display: grid;
@@ -169,6 +147,11 @@ button {
     font-weight: 400;
     font-style: normal;
     font-size: 12px;
+}
+
+.empty-placeholder {
+    display: inline-block;
+    height: 90vh;
 }
 
 footer {
