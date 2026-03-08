@@ -160,7 +160,7 @@ input[type=submit] {
     width: 90vw;
     margin: 30px auto;
 
-    display: grid;
+    display: none;
     grid-template-columns: 1.3fr 1fr;
     gap: 10px;
     ;
@@ -179,7 +179,7 @@ input[type=submit] {
 
 #infographic-name {
     margin-bottom: 100px;
-
+    color: #FF5100;
 }
 
 .infographic {
@@ -188,10 +188,12 @@ input[type=submit] {
     z-index: 3;
 }
 
-.empty-frame {
+#empty-frame {
     position: absolute;
     width: 20%;
-
+    stroke: #030033;
+    fill: none;
+    stroke-width: 40px;
 }
 
 .toolbox {
@@ -215,7 +217,7 @@ input[type=submit] {
     left: 35%;
     top: 9%;
     margin: 0px;
-    color: white;
+    color: #030033;
 }
 
 .toolbox form {
