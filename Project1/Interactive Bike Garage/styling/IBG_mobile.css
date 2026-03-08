@@ -11,7 +11,7 @@
     }
 
     h3 {
-        font-size: 22px;
+        font-size: 20px;
     }
 
     /* ---------- NAV ---------- */
@@ -21,8 +21,12 @@
     }
 
     .erase-memory-button {
-        right: 10px;
+        right: auto;
+        left: auto;
+        top: 28vh;
         font-size: 12px;
+        text-align: center;
+        width: 75vw;
         padding: 4px 8px;
     }
 
@@ -31,15 +35,29 @@
     .main-zone {
         height: auto;
         grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto;
+        grid-template-rows: 1.3fr 1fr 1.3fr;
         gap: 40px;
         padding: 40px 0;
     }
 
     /* hide side illustrations on small screens */
-    .tripod-element,
+
     .shop-element {
-        display: none;
+        right: 0vw;
+        bottom: -15vh;
+    }
+
+    .shop-element img {
+        width: 60vw;
+    }
+
+    .tripod-element {
+        left: -10vw;
+        top: 10vh;
+    }
+
+    .tripod-element img {
+        width: 60vw;
     }
 
     .bike-element img {
@@ -73,11 +91,11 @@
     .bikeObject button {
         font-size: 20px;
         padding: 15px;
-        flex-direction: column;
+
     }
 
     .bikeObject button img {
-        width: 120px;
+        width: 100px;
     }
 
     .bikeObject button p {
@@ -85,27 +103,39 @@
     }
 
     /* add bike */
+    .addBikeButton {
+        margin-bottom: 120px;
+    }
 
     .addBikeButton button {
+        top: 10vh;
         font-size: 20px;
+        width: 80vw;
+        height: fit-content;
         padding: 20px;
-        flex-direction: column;
+        gap: 40px;
+    }
+
+    .addBikeButton p {
+        padding: 0px;
     }
 
     .addBikeButton button img {
-        width: 120px;
+        width: 100px;
     }
 
     /* ---------- POPUP WINDOW ---------- */
 
     .bikeDetailsWindow {
-        width: 90vw;
+        width: 80vw;
         font-size: 18px;
         padding: 25px;
     }
 
     .bikeDetailsWindow h3 {
         font-size: 26px;
+        margin-bottom: 20px;
+        ;
     }
 
     .bikeDetailsWindow label {
@@ -116,7 +146,7 @@
 
     .partsZone {
 
-        width: 95vw;
+        width: 80vw;
 
         grid-template-columns: 1fr;
         grid-template-rows: auto auto;
@@ -142,8 +172,11 @@
     }
 
     #empty-frame {
-        width: 40%;
-        stroke-width: 25px;
+        display: block;
+        margin-top: 60px;
+        width: 30%;
+        height: fit-content;
+        stroke-width: 45px;
     }
 
     /* ---------- TOOLBOX ---------- */
@@ -154,11 +187,15 @@
 
     .toolbox-title {
         font-size: 24px;
+        align-items: end;
+        justify-content: left;
     }
 
     .bike-name-placeholder {
-        position: static;
-        text-align: center;
+        position: absolute;
+        text-align: right;
+        left: 45%;
+        top: 4%;
         margin-bottom: 15px;
     }
 
