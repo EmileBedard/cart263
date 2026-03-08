@@ -66,6 +66,10 @@ submitRegister.addEventListener("submit", function (event) {
     event.preventDefault();
     registerParts();
     logKnowndata();
+
+    // also shows a P tag message that gives user feedback: parts registered successfully!!
+    let confirmationMessage = document.querySelector(".register-successfull-message");
+    confirmationMessage.style.display = "inline-block";
 })
 
 

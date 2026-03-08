@@ -272,7 +272,7 @@ input[type=submit] {
     width: 100%;
     padding: 12px;
     margin: 8px 0;
-    margin-top: 40px;
+    margin-top: 60px;
     display: inline-block;
     font-family: "Space Mono", monospace;
     border: none;
@@ -281,6 +281,26 @@ input[type=submit] {
     color: white;
     background-color: #030033;
     cursor: pointer;
+}
+
+.toolbox input[type=submit]:hover {
+    scale: 105%;
+    background-color: #141076;
+}
+
+.register-successfull-message {
+
+    display: none;
+
+    position: absolute;
+    bottom: 100px;
+    align-self: center;
+
+    font-family: "Space Mono", monospace;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 15px;
+    color: #FF5100;
 }
 
 .toolbox label {
