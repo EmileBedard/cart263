@@ -40,7 +40,7 @@
 }
 
 
-.addBikeButton button {
+.addBikeButton {
 
     background-color: #E0D5C3;
     color: #030033;
@@ -62,7 +62,7 @@
     font-size: 30px;
 }
 
-.addBikeButton button img {
+.addBikeButton img {
     width: 200px;
 }
 
