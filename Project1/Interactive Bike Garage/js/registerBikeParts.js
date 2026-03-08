@@ -101,7 +101,17 @@ function logKnowndata() {
     document.getElementById("toolboxTypeInput").value = bikeInfo.bikeType;
 
     //only log info if we already have the tags created in local storage. else, let user define info for the first time
-    if (bikeInfo.bikeHandlebars) {
+    if (bikeInfo.bikeHandlebars ||
+        bikeInfo.bikeFrame ||
+        bikeInfo.bikeSize ||
+        bikeInfo.bikeWheels ||
+        bikeInfo.bikeTires ||
+        bikeInfo.bikeRearDerailleur ||
+        bikeInfo.bikeFrontDerailleur ||
+        bikeInfo.bikeCassette ||
+        bikeInfo.bikePlateau ||
+        bikeInfo.bikeCranks ||
+        bikeInfo.bikePedals) {
         document.getElementById("handlebarsInput").value = bikeInfo.bikeHandlebars;
         document.getElementById("frameInput").value = bikeInfo.bikeFrame;
         document.getElementById("sizeInput").value = bikeInfo.bikeSize;
