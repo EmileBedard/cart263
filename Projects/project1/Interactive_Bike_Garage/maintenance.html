@@ -18,7 +18,9 @@
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
 
 
+
     <link rel="stylesheet" href="styling/IBG_styles.css">
+    <link rel="stylesheet" href="styling/IBG_styles_parts_registry.css">
     <link rel="stylesheet" href="styling/IBG_mobile.css">
 
 
@@ -29,7 +31,9 @@
         href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
 
-    <script src="js/translateElements.js"></script>
+    <script src="js/bike.js" defer></script>
+    <script src="js/createBikes.js" defer></script>
+    <script src="js/registerBikeParts.js" defer></script>
 
 </head>
 
@@ -40,40 +44,29 @@
             <a href="index.html">
                 <h3>Interactive Bike Garage</h3>
             </a>
+
         </div>
     </nav>
 
-    <!-- main zone for bicycle and two options buttons-->
-    <div class="main-zone">
 
-
-        <!-- left and right illustrations to translate-->
-        <div class="tripod-element">
-            <img src="assets/tripod element.png" alt="bicycle maintenance tripod illustration">
-        </div>
-
-        <div class="shop-element">
-            <img src="assets/shop element.png" alt="bicycle mechanics shop illustration">
-        </div>
-
-
-        <!-- two button zones and bike element-->
-        <div class="left-button-zone">
-            <a href="parts_registry.html">
-                <button id="registerPartsButton">register parts</button>
-            </a>
-        </div>
-
-        <div class="bike-element">
-            <img src="assets/bike element.png" alt="bicycle line art illustration">
-        </div>
-
-        <div class="right-button-zone">
-            <button id="maintenanceButton">maintenance</button>
-        </div>
-
-
-    </div>
 </body>
+
+<footer>
+    <div class="footer-text">
+
+        <h1 class="footer-title">Interactive Bike garage</h1>
+
+        <p>
+            This website is made for cycling enthusiasts to register bike parts, maintain their vehicles and enjoy their
+            passion of
+            cycling. It is meant to be used as a tool for daily bike usage and trips to mechanics shop as a reminder and
+            list of bike parts.
+        </p>
+
+        <p>
+            Emile Bedard, cart 263, winter 2026, project 1, All original content.
+        </p>
+    </div>
+</footer>
 
 </html>
