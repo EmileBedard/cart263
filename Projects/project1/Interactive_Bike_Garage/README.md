@@ -1,4 +1,7 @@
 # Interactive Bike Garage!
+### For Desktops and mobile
+
+Émile Bédard. CART 263. March 2026
 
 ---
 
@@ -13,4 +16,14 @@ View this experience online!: [Interactive Bike Garage](https://emilebedard.gith
 Image of the Experience:
 
 ![Click Here To See The Artist Statement](assets/screenshot-IBG.png)
+
+## Attribution
+
+- This project uses Javascript, Html5 and css
+- The image is a screenshot of the *register parts* page
+- More than 90% of the code is human written but GenAI helped for certain issues.
+
+## License
+
+> This project is licensed under a Creative Commons Attribution ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)) license with the exception of libraries and other components with their own licenses.
 
