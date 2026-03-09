@@ -238,4 +238,26 @@
 
     }
 
+    main h1 {
+        font-size: 25px;
+    }
+
+    summary {
+        font-family: "Space Mono", monospace;
+        font-weight: 600;
+        font-style: normal;
+        font-size: 22px;
+        text-align: center;
+        border-bottom: 2px dashed black;
+        margin: 30px;
+
+    }
+
+    details {
+        font-family: "Space Mono", monospace;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 15px;
+    }
+
 }

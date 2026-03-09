@@ -41,6 +41,22 @@ a {
     color: inherit;
 }
 
+main h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Space Mono", monospace;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 30px;
+    color: white;
+    background-color: #FF5100;
+
+    margin-bottom: 10px;
+
+}
+
 h3 {
     display: flex;
     justify-content: center;
@@ -158,4 +174,22 @@ footer {
     top: 100vh;
     bottom: 0vh;
 
+}
+
+summary {
+    font-family: "Space Mono", monospace;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 30px;
+    text-align: center;
+    border-bottom: 2px dashed black;
+    margin: 20px;
+
+}
+
+details {
+    font-family: "Space Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
 }
