@@ -2,8 +2,10 @@
 let currentBikeId = null;
 let bikeInfo = null;
 
+//listens for clicks on the whole document
 document.addEventListener("click", function (event) {
 
+    //if when rerouting upstream, the browser founds out the user clicked on something called ".bikeObject"--> triggers the opening of the form and the registration of know infos
     if (event.target.closest(".bikeObject")) {
 
         let bikeId = event.target.closest(".bikeObject").id
@@ -59,7 +61,7 @@ document.addEventListener("click", function (event) {
 //     };
 // };
 
-
+// registers info in local storage and give feedback to user for succeeding
 let submitRegister = document.getElementById("complete-bike-details");
 
 submitRegister.addEventListener("submit", function (event) {

@@ -1,4 +1,5 @@
 class Bike {
+    //construct the bike with base attributes
     constructor(name, type, color) {
         this.name = name;
         this.type = type;
@@ -6,7 +7,7 @@ class Bike {
     }
 
 
-
+    // renders the bike as div and adds button according to bike id
     renderbike(id) {
 
         this.bike = document.createElement("div");
