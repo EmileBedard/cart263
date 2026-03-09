@@ -93,7 +93,7 @@
     /* add bike */
 
 
-    .addBikeButton button {
+    .addBikeButton {
 
         font-size: 25px;
         width: 100%;
@@ -109,7 +109,7 @@
     }
 
 
-    .addBikeButton button img {
+    .addBikeButtonimg {
         height: 80%;
         width: 130px;
     }
@@ -200,9 +200,11 @@
     .bike-name-placeholder {
         position: absolute;
         text-align: right;
-        left: 45%;
+        left: 40%;
         top: 4%;
         margin-bottom: 15px;
+        width: fit-content;
+        font-size: 15px;
     }
 
     /* form becomes vertical */
@@ -223,8 +225,17 @@
     }
 
     .toolbox input[type=submit] {
-        margin-top: 20px;
+        margin-top: 60px;
         padding: 12px;
+    }
+
+    .register-successfull-message {
+
+        display: none;
+
+        position: absolute;
+        bottom: 90px;
+
     }
 
 }
