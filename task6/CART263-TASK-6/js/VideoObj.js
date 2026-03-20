@@ -7,13 +7,13 @@ class VideoObj {
     this.w = w;
     this.h = h;
     this.shapeX = 10;
-    this.shapeY =10;
+    this.shapeY = 10;
     this.shapeCol = "#000000";
- 
 
+    //blur filter
     let filterButton_blur = document.getElementById("filter_button_blur");
     let blurInput = document.getElementById("blurnum");
-    this.userProvidedBlur  = 0;
+    this.userProvidedBlur = 0;
     let self = this;
 
     filterButton_blur.addEventListener("click", function () {
@@ -21,24 +21,65 @@ class VideoObj {
       self.userProvidedBlur = blurInput.value;
       console.log(self.userProvidedBlur);
     });
+
+    //sepia filter
+    let filterButton_sepia = document.getElementById("filter_button_sepia");
+    let sepiaInput = document.getElementById("sepianum");
+    this.userProvidedSepia = 0;
+
+    filterButton_sepia.addEventListener("click", function () {
+      //get value from input field
+      self.userProvidedSepia = sepiaInput.value;
+      console.log(self.userProvidedSepia);
+    });
+
+    //hue filter
+    let filterButton_hue = document.getElementById("filter_button_hue");
+    let hueInput = document.getElementById("huenum");
+    this.userProvidedHue = 0;
+
+    filterButton_hue.addEventListener("click", function () {
+      //get value from input field
+      self.userProvidedHue = hueInput.value;
+      console.log(self.userProvidedHue);
+    });
+
+
+    //invert filter
+    let filterButton_invert = document.getElementById("filter_button_invert");
+    let invertInput = document.getElementById("invertnum");
+    this.userProvidedInvert = 0;
+
+    filterButton_invert.addEventListener("click", function () {
+      //get value from input field
+      self.userProvidedInvert = invertInput.value;
+      console.log(self.userProvidedInvert);
+    });
+
   }
 
   display() {
     this.context.save();
-     //this.context.filter = `blur(${this.userProvidedBlur}px)`;
+
+    //filters
+    this.context.filter = `blur(${this.userProvidedBlur}px)`;
+    this.context.filter += `sepia(${this.userProvidedSepia}%)`;
+    this.context.filter += `hue-rotate(${this.userProvidedHue}deg)`;
+    this.context.filter += `invert(${this.userProvidedInvert}%)`;
+
     this.context.drawImage(this.videoElement, this.x, this.y, this.w, this.h);
     this.context.fillStyle = this.shapeCol;
-    this.context.fillRect(this.shapeX, this.shapeY, 50,50)
+    this.context.fillRect(this.shapeX, this.shapeY, 50, 50)
     this.context.restore();
   }
 
-    //called when rectangle color is to be updated
-  changeColor(newCol){
-   /** FILL IN */
+  //called when rectangle color is to be updated
+  changeColor(newCol) {
+    /** FILL IN */
   }
   //called when rectangle Pos is to be updated
-  updatePositionRect(mx,my){
-     /** FILL IN */
+  updatePositionRect(mx, my) {
+    /** FILL IN */
   }
   update(videoElement) {
     this.videoElement = videoElement;
