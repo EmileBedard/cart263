@@ -8,7 +8,11 @@ class VideoObj {
     this.h = h;
     this.shapeX = 10;
     this.shapeY = 10;
-    this.shapeCol = "#000000";
+    this.shapeCol = {
+      r: 200,
+      g: 200,
+      b: 200,
+    }
 
     //blur filter
     let filterButton_blur = document.getElementById("filter_button_blur");
@@ -68,14 +72,21 @@ class VideoObj {
     this.context.filter += `invert(${this.userProvidedInvert}%)`;
 
     this.context.drawImage(this.videoElement, this.x, this.y, this.w, this.h);
-    this.context.fillStyle = this.shapeCol;
+
+    this.context.fillStyle = `rgb(${this.shapeCol.r},${this.shapeCol.g},${this.shapeCol.b})`;
     this.context.fillRect(this.shapeX, this.shapeY, 50, 50)
+
     this.context.restore();
   }
 
   //called when rectangle color is to be updated
-  changeColor(newCol) {
-    /** FILL IN */
+  changeColor(newR, newG, newB) {
+
+    this.shapeCol.r = newR;
+    this.shapeCol.g = newG;
+    this.shapeCol.b = newB;
+
+    console.log(this.shapeCol.r, this.shapeCol.g, this.shapeCol.b);
   }
   //called when rectangle Pos is to be updated
   updatePositionRect(mx, my) {

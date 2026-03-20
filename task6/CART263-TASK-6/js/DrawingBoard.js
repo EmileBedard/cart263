@@ -5,6 +5,13 @@ class DrawingBoard {
     this.context = context;
     this.objectsOnCanvas = [];
     let self = this;
+
+    this.rectColor = {
+      r: 200,
+      b: 200,
+      g: 200,
+    }
+
     this.drawingBoardId = drawingBoardId;
     //each element has a mouse clicked and a mouse over
     this.canvas.addEventListener("click", function (e) {
@@ -34,7 +41,7 @@ class DrawingBoard {
       console.log("in C")
     }
     if (this.drawingBoardId === "partD") {
-      // console.log("in D")
+      console.log("in D")
     }
   }
 
@@ -58,6 +65,10 @@ class DrawingBoard {
     }
     if (this.drawingBoardId === "partD") {
       console.log("in D")
+
+      this.rectColor.r = Math.random() * 256;
+      this.rectColor.g = Math.random() * 256;
+      this.rectColor.b = Math.random() * 256;
     }
   }
   /* method to add obj to canvas */
@@ -85,6 +96,7 @@ class DrawingBoard {
     for (let i = 0; i < this.objectsOnCanvas.length; i++) {
       this.objectsOnCanvas[i].update(videoElement);
       this.objectsOnCanvas[i].updatePositionRect(this.mouseOffsetX, this.mouseOffsetY);
+      this.objectsOnCanvas[i].changeColor(this.rectColor.r, this.rectColor.g, this.rectColor.b);
       this.objectsOnCanvas[i].display();
 
     }
