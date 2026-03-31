@@ -1,0 +1,133 @@
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
+
+const raycaster = new THREE.Raycaster()
+let mouse = { x: 0, y: 0 };
+
+const scene = new THREE.Scene()
+const sizes = {
+    width: 800,
+    height: 600
+}
+const canvas = document.querySelector('canvas#three-ex')
+const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height)
+camera.position.z = 3;
+scene.add(camera)
+
+const controls = new OrbitControls(camera, canvas)
+
+
+const object1 = new THREE.Mesh(  // sphere 1
+    new THREE.SphereGeometry(0.5, 16, 16),
+    new THREE.MeshBasicMaterial({ color: 'blue' })
+)
+object1.position.x = -0.5
+
+const object2 = new THREE.Mesh(  // sphere 2
+    new THREE.SphereGeometry(0.5, 16, 16),
+    new THREE.MeshBasicMaterial({ color: '#ff0000' })
+)
+
+const object3 = new THREE.Mesh( // sphere 3
+    new THREE.SphereGeometry(0.5, 16, 16),
+    new THREE.MeshBasicMaterial({ color: 'green' })
+)
+object3.position.x = 2
+
+const material = new THREE.LineBasicMaterial({ color: 0x0000ff });
+const points = [];
+points.push(new THREE.Vector3(-1, 0, 0));
+points.push(new THREE.Vector3(10, 0, 0));
+const geometry = new THREE.BufferGeometry().setFromPoints(points);
+const line = new THREE.Line(geometry, material);
+
+
+scene.add(object1, object2, object3, line)
+
+// object1.updateMatrixWorld()
+// object2.updateMatrixWorld()
+// object3.updateMatrixWorld()
+
+// //ray will start somewhere on left of the spheres
+// const rayOrigin = new THREE.Vector3(-1, 0, 0)
+// //right (positive x)
+// const rayDirection = new THREE.Vector3(10, 0, 0)  //reduce magnitude BUT keep direction
+// console.log(rayDirection.length())
+// //set direction only (has length ==1)
+// rayDirection.normalize()
+// console.log(rayDirection.length())
+
+// raycaster.set(rayOrigin, rayDirection) //raycaster has been oriented
+
+
+
+window.requestAnimationFrame(animate);
+
+/// FOR MOUSE ENTER AND MOUSE LEAVE
+let currentIntersectedObj = null
+
+function animate(timer) {
+    controls.update();
+
+    raycaster.setFromCamera(mouse, camera);
+
+    const objectsToTest = [object1, object2, object3];
+    const intersects = raycaster.intersectObjects(objectsToTest);
+
+    if (intersects.length > 0) {
+        //there was none so we enter
+        if (currentIntersectedObj === null) {
+            currentIntersectedObj = intersects[0]; //take first
+            console.log("mouse enter");
+            currentIntersectedObj.object.material.color.set("#00c3ff");
+        }
+        else {
+
+            //the currently selected one is NO LONGER IN THE LIST
+            if (intersects.find(findIfCurrentObjIsActive) === undefined) {
+                currentIntersectedObj.object.material.color.set("#ff0000");
+                currentIntersectedObj = intersects[0]; //take first
+                currentIntersectedObj.object.material.color.set("#00c3ff");
+
+            }
+        }
+
+    }
+    //no intersections
+    else {
+        // check if NOT null (so there was one just over)
+        if (currentIntersectedObj !== null) {
+            // console.log("mouse out")
+            currentIntersectedObj.object.material.color.set("#ff1900");
+            currentIntersectedObj = null
+
+        }
+
+    }
+    function findIfCurrentObjIsActive(intersect) {
+        return intersect.object === currentIntersectedObj.object;
+    }
+
+    renderer.render(scene, camera);
+    window.requestAnimationFrame(animate);
+}
+
+const renderer = new THREE.WebGLRenderer({
+    canvas: canvas
+})
+
+renderer.setSize(sizes.width, sizes.height)
+
+window.addEventListener("mousemove", function (event) {
+    mouse.x = (event.clientX / sizes.width) * 2 - 1; //map to between -1,1
+    mouse.y = -(event.clientY / sizes.height) * 2 + 1; //map to between -1,1
+    console.log(mouse);
+});
+
+window.addEventListener("click", function (event) {
+    console.log("click")
+    if (currentIntersectedObj !== null) {
+        currentIntersectedObj.object.material.color.set("#ffe600");
+    }
+
+})
