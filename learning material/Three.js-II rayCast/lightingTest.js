@@ -21,13 +21,13 @@ ambientLight.color = new THREE.Color(0xff0000);
 console.log(ambientLight.color);
 ambientLight.intensity = .5;
 
-// scene.add(ambientLight)
+scene.add(ambientLight)
 
 const directionalLight = new THREE.DirectionalLight(0xff0000, 0.5);  //  directional
 directionalLight.position.set(-5, 5, 0)
 // scene.add(directionalLight);
 
-const pointLight1 = new THREE.PointLight(0x0000ff, 1);
+const pointLight1 = new THREE.PointLight(0x0000ff, 1); // point light
 pointLight1.position.set(0, 0.3, 0);
 pointLight1.distance = 0;
 pointLight1.intensity = 2;
@@ -37,7 +37,15 @@ pointLight2.position.set(1, 0.3, 1);
 pointLight2.distance = 0;
 pointLight2.intensity = 2;
 
-scene.add(pointLight1, pointLight2);
+// scene.add(pointLight1, pointLight2);
+
+const spotLight = new THREE.SpotLight(0x78ff00, 4.5, 10, Math.PI * 0.1, 0.25, 1)  //  spot light
+spotLight.position.set(0, 2, 3)
+spotLight.castShadow = true;
+scene.add(spotLight)
+scene.add(spotLight.target)
+
+spotLight.target.position.x = -2
 
 //----------------------------------------------------------       ADD OBJECTS
 
@@ -56,6 +64,8 @@ plane.position.z = 1;
 plane.position.x = -1;
 
 scene.add(plane)
+
+
 //---------------------------------------------------------     RENDER AND ANIMATE
 const renderer = new THREE.WebGLRenderer({
     canvas: canvas
