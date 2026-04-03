@@ -17,9 +17,6 @@ export class PlanetD {
         //Create planet group
         this.group = new THREE.Group()
 
-        //load and run planets gltf!!
-        this.loadAndRunModels(this.group);
-
 
         // Create planet
         //STEP 1:
@@ -34,11 +31,10 @@ export class PlanetD {
             color: '#ff0000'
         });
 
+        //placeholder red planet
         this.mesh = new THREE.Mesh(planetGeo, planetMat);
         this.mesh.castShadow = true;
-        this.mesh.receiveShadow = true;
-
-        this.group.add(this.mesh);
+        //this.group.add(this.mesh);
 
         //STEP 2: 
         //TODO: Add from 1 to 3 orbiting moons to the planet group. 
@@ -72,6 +68,9 @@ export class PlanetD {
         //TODO: Load Blender models to populate the planet with multiple props and critters by adding them to the planet group.
         //TODO: Make sure to rotate the models so they are oriented correctly relative to the surface of the planet.
 
+        //load and run planets gltf!!
+        this.loadAndRunModels(this.group);
+
         //STEP 4:
         //TODO: Use raycasting in the click() method below to detect clicks on the models, and make an animation happen when a model is clicked.
         //TODO: Use your imagination and creativity!
@@ -85,12 +84,19 @@ export class PlanetD {
         this.group.position.x = Math.cos(this.angle) * this.orbitRadius;
         this.group.position.z = Math.sin(this.angle) * this.orbitRadius;
 
+        //TODO: Do the moon orbits and the model animations here.
         // Rotate planet
         this.group.rotation.y += delta * 0.5;
 
-        //TODO: Do the moon orbits and the model animations here.
+        //make summer visible first and standby for the others
         if (this.summerPlanet) {
-
+            this.summerPlanet.visible = false;
+        }
+        if (this.autumnPlanet) {
+            this.autumnPlanet.visible = true;
+        }
+        if (this.winterPlanet) {
+            this.winterPlanet.visible = false;
         }
     }
 
@@ -107,47 +113,70 @@ export class PlanetD {
         let gltfModel1 = null;
         let gltfModel2 = null;
         let gltfModel3 = null;
+        let objs = []
 
         try {
             gltfModel1 = await gltfLoader.loadAsync('models/summer-planet-task7-cart263.gltf');
-            //gltfModel2 = await gltfLoader.loadAsync('models/summer-planet-task7-cart263.gltf');
-            //gltfModel3 = await gltfLoader.loadAsync('models/summer-planet-task7-cart263.gltf');
+            gltfModel2 = await gltfLoader.loadAsync('models/autumn-planet-task7-cart263.gltf');
+            gltfModel3 = await gltfLoader.loadAsync('models/winter-planet-task7-cart263.gltf');
 
-            let objs = []
             objs.push(gltfModel1)
-            //objs.push(gltfModel2)
-            //objs.push(gltfModel3)
+            objs.push(gltfModel2)
+            objs.push(gltfModel3)
         }
         catch (error) {
             console.log(error.message)
         }
 
+        let lanternLights = [];
+        let planetLights = [];
+
         //setup planet1 -- summer
         let summerPlanet = gltfModel1.scene;
-        let planetLight = summerPlanet.getObjectByName('planet_light');
-        let lanternLight = summerPlanet.getObjectByName('lantern');
+
+
+        planetLights.push(summerPlanet.children[0].children[8]);
+        lanternLights.push(summerPlanet.children[0].children[7]);
+
+        //setup planet2 -- autumn
+        let autumnPlanet = gltfModel2.scene;
+        planetLights.push(autumnPlanet.children[0].children[8]);
+        lanternLights.push(autumnPlanet.children[0].children[7]);
+
+        //setup planet3 -- winter
+        let winterPlanet = gltfModel3.scene;
+        planetLights.push(winterPlanet.children[0].children[8]);
+        lanternLights.push(winterPlanet.children[0].children[7]);
 
         //setup lights
-        planetLight.intensity = 0;
+        planetLights.forEach(element => {
+            element.intensity = 0;
+        });
+        lanternLights.forEach(element => {
+            element.intensity = 2;
+        });
 
-        lanternLight.intensity = 2;
-        lanternLight.color.set(0xFF8B2C);
+        lanternLights[0].color.set(0xFFFFFF); //white for summer
+        lanternLights[1].color.set(0xFF8B2C); //orange for fall
+        lanternLights[2].color.set(0xFF0000); //red for winter
 
-        //transform
-        summerPlanet.position.set(0, 0, 0);
-        summerPlanet.scale.set(3, 3, 3);
+        objs.forEach(element => {
+            element.scene.position.set(0, 0, 0);
+            element.scene.scale.set(3, 3, 3);
+            element.scene.castShadow = true;
+            element.scene.receiveShadow = true;
+        });
 
-        //setup shadows
-        summerPlanet.castShadow = true;
-        summerPlanet.receiveShadow = true;
 
 
+        //set variables for modification and manipulation outside of function
         this.summerPlanet = summerPlanet;
-        //this.autumnPlanet = autumnPlanet;
-        //this.winterPlanet = winterPlanet;
+        this.autumnPlanet = autumnPlanet;
+        this.winterPlanet = winterPlanet;
+
         //push to group
-        objsGroup.add(summerPlanet);
-        console.log(summerPlanet);
+        objsGroup.add(summerPlanet, autumnPlanet, winterPlanet);
+
     }
 }
 
