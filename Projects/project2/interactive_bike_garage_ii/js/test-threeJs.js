@@ -1,17 +1,12 @@
 import * as THREE from "three";
-import { BloomPass } from 'three/addons/postprocessing/BloomPass.js';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
-import { GlitchPass } from 'three/addons/postprocessing/GlitchPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
-import { DotScreenPass } from 'three/addons/postprocessing/DotScreenPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
-import { BokehPass } from 'three/addons/postprocessing/BokehPass.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 
 
-const controls = new OrbitControls(camera, renderer.domElement);
 const scene = new THREE.Scene();
 const canvas = document.querySelector("canvas#three-ex");
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -24,6 +19,7 @@ const renderer = new THREE.WebGLRenderer({
     canvas: canvas
 })
 renderer.setSize(sizes.width, sizes.height);
+const controls = new OrbitControls(camera, renderer.domElement);
 
 const composer = new EffectComposer(renderer);
 // adding some passes
@@ -31,22 +27,10 @@ const renderPass = new RenderPass(scene, camera);
 composer.addPass(renderPass);
 
 //effects
-const effectBloom = new BloomPass(1, 25);
-//composer.addPass(effectBloom);
-const glitchPass = new GlitchPass();
-glitchPass.goWild = false;
-//composer.addPass(glitchPass);
-const pass = new DotScreenPass(new THREE.Vector2(0, 0), 1, 0.01);
-//composer.addPass(pass);
+
 const resolution = new THREE.Vector2(window.innerWidth, window.innerHeight);
 const bloomPass = new UnrealBloomPass(resolution, 0.1, 1, 0.2);
-//composer.addPass(bloomPass);
-const bokehPass = new BokehPass(scene, camera, {
-    focus: 8.0,      // Distance from Camera(8) to Green(0)
-    aperture: 0.01,  // Small increase to create a noticeable depth falloff
-    maxblur: 0.01
-});
-composer.addPass(bokehPass);
+composer.addPass(bloomPass);
 
 
 
@@ -59,10 +43,24 @@ composer.addPass(outputPass);
 
 
 // --- LIGHTING ---
-const light = new THREE.DirectionalLight(0xffffff, 5);
-light.position.set(1, 0, 3);
-scene.add(light);
-scene.add(new THREE.AmbientLight(0x404040));
+const pointLights = [
+    { color: 0xffffff, x: 0, y: 0, z: 1, intensity: 20 },
+    { color: 0xffffff, x: 0, y: 0, z: 3, intensity: 20 },
+    { color: 0xffffff, x: 0, y: 0, z: 5, intensity: 20 },
+    { color: 0xffffff, x: 0, y: 0, z: -3, intensity: 20 },
+    { color: 0xffffff, x: 0, y: 0, z: -10, intensity: 20 },
+
+
+];
+pointLights.forEach(pLight => {
+    const point = new THREE.PointLight(pLight.color, pLight.intensity);
+    point.position.z = pLight.x;
+    point.position.x = pLight.y;
+    point.position.z = pLight.z;
+    point.castShadow = true;
+    scene.add(point);
+});
+
 
 // --- PARALLAX LAYERS ---
 // We create 3 planes at different Z depths to see the effect
@@ -89,8 +87,17 @@ layers.forEach(data => {
     // Offset them slightly so they don't overlap perfectly
     mesh.position.x = data.z * 0.5;
     mesh.rotation.z = data.z * -0.2;
+    mesh.receiveShadow = true;
     scene.add(mesh);
 });
+
+const boxGeo = new THREE.BoxGeometry(20, 20, 20);
+const boxMaterial = new THREE.MeshStandardMaterial({ color: "#4422ff" });
+const box = new THREE.Mesh(boxGeo, boxMaterial);
+
+box.position.set(0, 0, 0);
+//scene.add(box);
+
 
 // --- ANIMATION & PARALLAX VARIABLES ---
 const mouse = { x: 0, y: 0 };
@@ -129,17 +136,17 @@ function animate() {
     currentPos.y += (targetPos.y - currentPos.y) * dampening;
 
     // 3. Apply to camera position
-    camera.position.x = currentPos.x;
-    camera.position.y = currentPos.y;
+    //camera.position.x = currentPos.x;
+    //camera.position.y = currentPos.y;
 
     // 4. Look at the center to emphasize the depth shift
-    camera.lookAt(0, 0, 0);
+    //camera.lookAt(0, 0, 0);
 
     const targetPoint = new THREE.Vector3(0, 0, 0);
     const distance = camera.position.distanceTo(targetPoint);
 
     // Update the bokeh pass focus dynamically
-    bokehPass.uniforms['focus'].value = distance;
+    bloomPass.strength = distance * 0.005;
 
     composer.render(); // instead of renderer.render()
 }
