@@ -93,39 +93,6 @@ h3 {
 
 }
 
-.bike-element {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    transition: transform 0.4s cubic-bezier(0.23, -0.66, 0.52, 1);
-}
-
-.bike-element img {
-    width: 35vw;
-}
-
-.tripod-element {
-    position: absolute;
-    left: -25vw;
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.tripod-element img {
-    width: 25vw;
-}
-
-.shop-element {
-    position: absolute;
-    right: -28vw;
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.shop-element img {
-    width: 28vw;
-}
-
 .right-button-zone {
     display: flex;
     justify-content: center;
@@ -138,6 +105,11 @@ h3 {
     justify-content: center;
     align-content: center;
 
+}
+
+canvas {
+    position: absolute;
+    z-index: 0;
 }
 
 button {
