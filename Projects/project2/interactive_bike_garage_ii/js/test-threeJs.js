@@ -7,32 +7,41 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-
-
 // setup ---- 
 
 //// gltf loader ----
 const gltfLoader = new GLTFLoader();
 
-//// scene and canvas ----
-const scene = new THREE.Scene();
-const canvas = document.querySelector("canvas#three-ex");
 
-//// camera + sizes ----
-let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(0, 5, 10);
-scene.add(camera);
-
-const sizes = {
+let sizes = {
     width: window.innerWidth,
-    height: window.innerHeight
+    height: window.innerHeight,
+};
+
+setupContainer();
+
+function setupContainer() {
+
+    //// scene and canvas ----
+    let container = document.querySelector('#canvas-container');
+    sizes.width = container.clientWidth;
+    sizes.height = container.clientHeight;
+
+    console.log(sizes.width, sizes.height)
 }
+
+const scene = new THREE.Scene();
+let canvas = document.querySelector("canvas#three-ex");
+
+let camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 1000);
+scene.add(camera);
 
 //// renderer ----
 const renderer = new THREE.WebGLRenderer({
     canvas: canvas
 })
 renderer.setSize(sizes.width, sizes.height);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Good for sharp text/edges
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
@@ -45,11 +54,12 @@ composer.addPass(renderPass);
 
 //effects
 const resolution = new THREE.Vector2(window.innerWidth, window.innerHeight);
-const bloomPass = new UnrealBloomPass(resolution, 0.1, 1, 0.2);
-//composer.addPass(bloomPass);
+const bloomPass = new UnrealBloomPass(resolution, 0.01, 1, 0.2);
+composer.addPass(bloomPass);
 
 const outputPass = new OutputPass()
 composer.addPass(outputPass);
+
 
 // Main Scene ----
 // add gltf model
@@ -97,7 +107,6 @@ window.addEventListener('resize', () => {
 //// main run function ----
 function addAndRun(loadedObjsArray) {
     const garageScene = loadedObjsArray[0].scene;
-    console.log(garageScene);
     scene.add(garageScene);
 
 
@@ -150,29 +159,6 @@ function addAndRun(loadedObjsArray) {
         //scene.add(point);
     });
 
-    garageScene.children.forEach(element => {
-        if (element.isMesh) {
-            element.castShadow = true;
-            element.receiveShadow = true;
-        }
-    });
-
-
-
-
-    const sun = garageScene.children.find(child => child.isPointLight);
-    sun.intensity = 4000;
-    sun.castShadow = true;
-    sun.shadow.mapSize.width = 2048;
-    sun.shadow.mapSize.height = 2048;
-    sun.shadow.camera.near = 0.1;
-    sun.shadow.camera.far = 100;
-    sun.shadow.bias = -0.001;
-
-
-
-
-
     animate();
 
     function animate() {
@@ -205,4 +191,5 @@ function addAndRun(loadedObjsArray) {
         composer.render(); // instead of renderer.render()
     }
 }
+
 

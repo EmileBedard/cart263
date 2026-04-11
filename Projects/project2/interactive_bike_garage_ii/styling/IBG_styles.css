@@ -32,7 +32,7 @@
 
 body {
     background: #EAE3D7;
-    overflow-x: hidden;
+    margin: 5px;
     min-height: 100vh;
 }
 
@@ -72,12 +72,15 @@ h3 {
 
 }
 
+
+
 .banner {
     background: #EAE3D7;
     border-bottom: 3px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 3;
 }
 
 .banner h3 {
@@ -89,7 +92,7 @@ h3 {
     display: grid;
     justify-content: center;
     align-items: center;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 
 }
 
@@ -107,9 +110,20 @@ h3 {
 
 }
 
-canvas {
+#canvas-container {
     position: absolute;
-    z-index: 0;
+    width: 98vw;
+    height: 90vh;
+    margin: 0 auto;
+    overflow: hidden;
+    border: 3px solid black;
+    z-index: -5;
+}
+
+#three-ex {
+    width: 100% !important;
+    height: 100% !important;
+    position: relative;
 }
 
 button {
