@@ -6,6 +6,9 @@ import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { HDRLoader } from 'three/addons/loaders/HDRLoader.js';
+
+
 
 // setup ---- 
 
@@ -34,6 +37,7 @@ const scene = new THREE.Scene();
 let canvas = document.querySelector("canvas#three-ex");
 
 let camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 1000);
+camera.position.set(0, 5, 10);
 scene.add(camera);
 
 //// renderer ----
@@ -54,11 +58,12 @@ composer.addPass(renderPass);
 
 //effects
 const resolution = new THREE.Vector2(window.innerWidth, window.innerHeight);
-const bloomPass = new UnrealBloomPass(resolution, 0.01, 1, 0.2);
+const bloomPass = new UnrealBloomPass(resolution, 0.04, 0.2, 0.2);
 composer.addPass(bloomPass);
 
 const outputPass = new OutputPass()
 composer.addPass(outputPass);
+
 
 
 // Main Scene ----
@@ -68,8 +73,22 @@ let garageModel = null;
 loadAndRunModels();
 async function loadAndRunModels(objectsGroup) {
     try {
-        garageModel = await gltfLoader.loadAsync('assets/garage-v0/project2-interactiveBikeGarage-cart263.gltf');
+        // const loader = new HDRLoader();
 
+        // // 2. Load your HDR file (make sure to update the path to your actual file)
+        // const hdrTexture = await loader.loadAsync('assets/garage-v0/combined map.hdr');
+
+        // // 3. Set the mapping so Three.js knows it's a 360/spherical image
+        // hdrTexture.mapping = THREE.EquirectangularReflectionMapping;
+
+        // // 4. Apply it to the scene! 
+        // scene.environment = hdrTexture;
+        // console.log(scene.environment)
+
+        // // Optional: Uncomment the next line if you also want to see the HDR as the background skybox
+        // scene.background = lightMap;
+
+        garageModel = await gltfLoader.loadAsync('assets/garage-v0/project2-interactiveBikeGarage-cart263.gltf');
         let objs = [] //keeping the array if i need more gltf later
         objs.push(garageModel);
 
@@ -86,8 +105,8 @@ async function loadAndRunModels(objectsGroup) {
 const mouse = { x: 0, y: 0 };
 const targetPos = new THREE.Vector2(0, 0);
 const originalBlenderPos = new THREE.Vector3();
-const movementLimit = 1.5; // Maximum units the camera shifts
-const dampening = 0.01;    // Smoothness (lower = silkier)
+const movementLimit = 5; // Maximum units the camera shifts
+const dampening = 0.02;    // Smoothness (lower = silkier)
 
 
 ////// event listeners for mouse and parallax ----
@@ -107,7 +126,10 @@ window.addEventListener('resize', () => {
 //// main run function ----
 function addAndRun(loadedObjsArray) {
     const garageScene = loadedObjsArray[0].scene;
+
+    console.log(garageScene.children[0]);
     scene.add(garageScene);
+
 
 
 
@@ -141,24 +163,6 @@ function addAndRun(loadedObjsArray) {
         controls.update();
     }
 
-
-    //// Lighting + shadow ----
-    const protoPointLights = [
-        { color: 0xffffff, x: 0, y: 0, z: 1, intensity: 20 },
-        { color: 0xffffff, x: 0, y: 0, z: 3, intensity: 20 },
-        { color: 0xffffff, x: 0, y: 0, z: 5, intensity: 20 },
-        { color: 0xffffff, x: 0, y: 0, z: -3, intensity: 20 },
-        { color: 0xffffff, x: 0, y: 0, z: -10, intensity: 20 },
-    ];
-    protoPointLights.forEach(pLight => {
-        const point = new THREE.PointLight(pLight.color, pLight.intensity);
-        point.position.z = pLight.x;
-        point.position.x = pLight.y;
-        point.position.z = pLight.z;
-        point.castShadow = true;
-        //scene.add(point);
-    });
-
     animate();
 
     function animate() {
@@ -183,9 +187,7 @@ function addAndRun(loadedObjsArray) {
             // 4. Look at the center
             camera.lookAt(0, 0, 0);
         }
-        else {
-            controls.update();
-        }
+
 
 
         composer.render(); // instead of renderer.render()
