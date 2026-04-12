@@ -6,69 +6,51 @@
 
     /* ---------- GENERAL ---------- */
 
-    body {
-        overflow-x: hidden;
-        height: min-content;
-    }
 
     h3 {
-        font-size: 20px;
+        font-size: 25px;
+        margin: 30px;
     }
 
     /* ---------- NAV ---------- */
 
     .banner {
-        padding: 10px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        width: 100vw;
+    }
+
+    .banner-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        width: 100%;
     }
 
 
 
     /* ---------- HOME PAGE ---------- */
 
-    .main-zone {
-        height: 70vh;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
-        gap: 40px;
-        padding: 40px 0;
-    }
-
-    /* hide side illustrations on small screens */
-
-    .shop-element {
-        display: none;
-    }
-
-
-    .tripod-element {
-        display: none;
-    }
-
-    .bike-element {
-        transition: none;
-    }
-
-    .bike-element img {
-        width: 80vw;
-    }
-
-    .left-button-zone,
-    .right-button-zone {
-        width: 100%;
-    }
 
     button {
-        font-size: 18px;
+        font-size: 15px;
         padding: 10px 20px;
+        margin: 10px;
     }
 
     /* ---------- BIKES MENU ---------- */
 
     .bikes-menu {
         justify-content: center;
-        padding: 20px;
-        gap: 15px;
+        align-items: center;
+        width: 95vw;
+        margin: 0px;
     }
+
 
     .bikes-menu-instructions {
         font-size: 22px;
