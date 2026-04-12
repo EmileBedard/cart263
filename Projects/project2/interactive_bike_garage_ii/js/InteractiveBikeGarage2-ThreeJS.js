@@ -153,10 +153,25 @@ function addAndRun(loadedObjsArray) {
         console.log("camera not loaded:error")
     }
 
-    animate();
-    function animate() {
-        requestAnimationFrame(animate);
+    // animation mixer ----
+    const mixer = new THREE.AnimationMixer(cabinetObj, workbenchObj)
 
+    // Access open door aniamtion for cabinet
+    const cabinetClip = loadedObjsArray[1].animations[0];
+    const openDoor = mixer.clipAction(cabinetClip);
+    openDoor.play();
+
+
+    let elapsedTime = 0;
+    window.requestAnimationFrame(animate);
+
+    function animate(timer) {
+
+        //calculate the difference since last frame
+        let deltaTime = (timer - elapsedTime) / 1000; //put in secs
+        elapsedTime = timer; //update  new elapsedTime
+
+        //controls camera parallax
         if (camera.name === "blenderCamera") {
 
             // calculate offset
@@ -173,7 +188,14 @@ function addAndRun(loadedObjsArray) {
 
             camera.lookAt(0, 0, 0); // look at bike
         }
+
+        //animation mixer
+        if (mixer) {
+            mixer.update(deltaTime);
+        }
+
         composer.render();
+        window.requestAnimationFrame(animate);
     }
 }
 
