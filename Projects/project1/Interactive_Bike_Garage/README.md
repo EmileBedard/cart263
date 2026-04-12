@@ -15,7 +15,7 @@ View this experience online!: [Interactive Bike Garage](https://emilebedard.gith
 
 Image of the Experience:
 
-![Click Here To See The Artist Statement](assets/screenshot-IBG.png)
+![ScreenShot](assets/screenshot-IBG.png)
 
 ## Attribution
 
