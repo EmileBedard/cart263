@@ -77,9 +77,10 @@
 
     .addBikeButton {
 
-        font-size: 25px;
+        font-size: 20px;
         width: 100%;
-        height: fit-content;
+        height: 8vh;
+
         padding: 0px;
         gap: 0px;
         margin-bottom: 15px;
@@ -90,11 +91,6 @@
         justify-content: center;
     }
 
-
-    .addBikeButton img {
-        height: 80%;
-        width: 130px;
-    }
 
     /* ---------- POPUP WINDOW ---------- */
 
