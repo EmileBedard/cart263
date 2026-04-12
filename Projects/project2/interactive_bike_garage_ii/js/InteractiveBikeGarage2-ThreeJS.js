@@ -62,6 +62,8 @@ composer.addPass(outputPass);
 // Main Scene ----
 // add gltf model
 let garageModel = null;
+let cabinetModel = null;
+let workbenchModel = null;
 
 loadAndRunModels();
 async function loadAndRunModels(objectsGroup) {
@@ -76,11 +78,11 @@ async function loadAndRunModels(objectsGroup) {
         scene.background = hdrTexture;
 
         //load blender scene from gltf
-        garageModel = await gltfLoader.loadAsync('assets/garage-v0/project2-interactiveBikeGarage-cart263.gltf');
+        garageModel = await gltfLoader.loadAsync('assets/garage-v0/garage.glb');
         //load cabinet gltf
-        cabinetModel = await gltfLoader.loadAsync('assets/garage-v0/project2-interactiveBikeGarage-cart263.gltf');
+        cabinetModel = await gltfLoader.loadAsync('assets/garage-v0/cabinet.glb');
         //load workbench gltf
-        workbenchModel = await gltfLoader.loadAsync('assets/garage-v0/project2-interactiveBikeGarage-cart263.gltf');
+        workbenchModel = await gltfLoader.loadAsync('assets/garage-v0/workbench.glb');
 
         let objs = []
         objs.push(garageModel, cabinetModel, workbenchModel);
@@ -118,8 +120,18 @@ window.addEventListener('resize', () => {
 
 //// main run function ----
 function addAndRun(loadedObjsArray) {
+    console.log(loadedObjsArray)
+    //garage
     const garageScene = loadedObjsArray[0].scene; //load blender data and place in the scene
     scene.add(garageScene);
+
+    //cabinet
+    const cabinetObj = loadedObjsArray[1].scene; //load blender data and place in the scene
+    scene.add(cabinetObj);
+
+    //workbench
+    const workbenchObj = loadedObjsArray[2].scene; //load blender data and place in the scene
+    scene.add(workbenchObj);
 
     ////camera from blender----
     let blenderCamera = garageScene.children.find(child => child.isCamera);
