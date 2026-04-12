@@ -66,20 +66,21 @@ let garageModel = null;
 loadAndRunModels();
 async function loadAndRunModels(objectsGroup) {
     try {
-        // const loader = new HDRLoader();
+        const loader = new HDRLoader();
 
         // // 2. Load your HDR file (make sure to update the path to your actual file)
-        // const hdrTexture = await loader.loadAsync('assets/garage-v0/combined map.hdr');
+        const hdrTexture = await loader.loadAsync('assets/drakensberg_solitary_mountain_1k.hdr');
+        console.log(hdrTexture);
 
         // // 3. Set the mapping so Three.js knows it's a 360/spherical image
-        // hdrTexture.mapping = THREE.EquirectangularReflectionMapping;
+        hdrTexture.mapping = THREE.EquirectangularReflectionMapping;
 
         // // 4. Apply it to the scene! 
-        // scene.environment = hdrTexture;
+        //scene.environment = hdrTexture;
         // console.log(scene.environment)
 
         // // Optional: Uncomment the next line if you also want to see the HDR as the background skybox
-        // scene.background = lightMap;
+        scene.background = hdrTexture;
 
         garageModel = await gltfLoader.loadAsync('assets/garage-v0/project2-interactiveBikeGarage-cart263.gltf');
         let objs = [] //keeping the array if i need more gltf later
