@@ -61,25 +61,22 @@ h3 {
     display: flex;
     justify-content: center;
     align-items: center;
-
+    margin-left: 30px;
     font-family: "Space Mono", monospace;
     font-weight: 700;
     font-style: normal;
     font-size: 30px;
     color: black;
 
-    margin-bottom: 10px;
 
 }
 
-
-
 .banner {
-
     border-bottom: 3px solid white;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    /* This pushes the two groups apart */
     z-index: 3;
 }
 
@@ -118,20 +115,21 @@ h3 {
 }
 
 button {
+
     position: relative;
-    background: none;
+
+    background: white;
     border: 2px solid white;
-    color: white;
+    color: black;
     padding: 5px 25px;
     z-index: 3;
     border-radius: 20px;
     cursor: pointer;
-
     margin-left: 30px;
     margin-right: 30px;
 
     font-family: "Space Mono", monospace;
-    font-weight: 400;
+    font-weight: 600;
     font-style: normal;
     font-size: 20px;
 }
