@@ -1,56 +1,78 @@
 .bikes-menu {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    margin-left: 20px;
+    margin-top: 20px;
     padding: 10px;
     gap: 20px;
+    width: 35vw;
+}
+
+.blur-zone {
+    display: flex;
+    flex-wrap: wrap;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    /* Required for Safari */
+    gap: 30px;
+    padding: 40px;
+    border: none;
+    border-radius: 50px;
 }
 
 .bikes-menu-instructions {
-    width: 100vw;
+    width: 100%;
     text-align: center;
 
+    left: auto;
     font-family: "Space Mono", monospace;
-    font-weight: 400;
+    font-weight: 600;
     font-style: normal;
-    font-size: 30px;
+    color: white;
+    font-size: 22px;
 }
 
 .erase-memory-button {
 
-    border: black solid 2px;
-    padding: 3px 10px;
+    border: white solid 3px;
     border-radius: 25px;
-    width: 90vw;
+    width: 100%;
     text-align: center;
     font-family: "Space Mono", monospace;
     font-weight: 700;
     font-style: normal;
     font-size: 15px;
-    color: black;
+    color: white;
     transition: background-color 0.2s ease-in-out;
     cursor: pointer;
+
+    margin-bottom: 30px;
 }
 
 .erase-memory-button:hover {
-    color: white;
-    background-color: red;
-    border: red solid 2px;
+
+    background-color: #FF5100;
+    border: #FF5100 solid 3px;
 }
 
 
 .addBikeButton {
+    display: flex;
+    align-items: center;
 
-    background-color: #E0D5C3;
-    color: #030033;
-    padding: 30px;
-    margin-bottom: 30px;
-
+    background-color: white;
+    color: black;
 
     border-radius: 20px;
     cursor: pointer;
     width: 100%;
+    height: 10vh;
+    margin: 0px;
 
     display: flex;
     justify-content: center;
@@ -62,12 +84,9 @@
     font-size: 30px;
 }
 
-.addBikeButton img {
-    width: 200px;
-}
 
 button p {
-    padding: 20px 30px;
+    margin: 0px;
 }
 
 .bikeObject {
@@ -93,7 +112,7 @@ button p {
     font-family: "Space Mono", monospace;
     font-weight: 600;
     font-style: normal;
-    font-size: 30px;
+    font-size: 20px;
 
     transition: scale 0.2s ease-in-out;
 }
@@ -157,7 +176,7 @@ input[type=submit] {
     border-radius: 10px;
     box-sizing: border-box;
     color: white;
-    background-color: #030033;
+    background-color: black;
     cursor: pointer;
 }
 

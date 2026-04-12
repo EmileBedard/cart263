@@ -76,7 +76,7 @@ h3 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* This pushes the two groups apart */
+
     z-index: 3;
 }
 
@@ -96,14 +96,14 @@ h3 {
 
 
 #canvas-container {
-    position: absolute;
+    position: fixed;
     top: 5px;
     left: 5px;
     width: 99%;
     height: 100%;
     margin: 0 auto;
     overflow: hidden;
-    border: 3px solid black;
+
     z-index: -5;
 
 }
@@ -111,7 +111,7 @@ h3 {
 #three-ex {
     width: 100% !important;
     height: 100% !important;
-    position: relative;
+    position: absolute;
 }
 
 button {
@@ -136,7 +136,8 @@ button {
 
 .footer-text {
     bottom: 0vh;
-    border-top: 2px solid black;
+    border-top: 2px solid white;
+    color: white;
     font-family: "Space Mono", monospace;
     font-weight: 400;
     font-style: normal;
@@ -160,9 +161,14 @@ summary {
     font-style: normal;
     font-size: 30px;
     text-align: center;
-    border-bottom: 2px dashed black;
+    border-bottom: 2px dashed white;
+    color: white;
     margin: 20px;
 
+}
+
+main p {
+    color: white;
 }
 
 details {

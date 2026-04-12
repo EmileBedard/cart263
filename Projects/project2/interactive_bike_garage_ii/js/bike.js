@@ -15,9 +15,8 @@ class Bike {
         this.bike.id = (id);
 
         this.bikeButton = document.createElement("button");
-        this.bikeButton.innerHTML = `<p>${this.name}</p> <img src="assets/small bike element white.svg" alt="bike">`;
+        this.bikeButton.innerHTML = `<p>${this.name}</p>`;
         this.bikeButton.style.backgroundColor = `${this.color}`;
-
 
         let menu = document.querySelector(".bikes-menu");
 

@@ -37,7 +37,8 @@ scene.add(camera);
 
 //// renderer ----
 const renderer = new THREE.WebGLRenderer({
-    canvas: canvas
+    canvas: canvas,
+    antialias: true,
 })
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Good for sharp text/edges
@@ -142,7 +143,14 @@ function addAndRun(loadedObjsArray) {
         blenderCamera.name = "blenderCamera";
         camera = blenderCamera;
 
-        originalBlenderPos.copy(blenderCamera.position);
+        const isRegistryPage = window.location.pathname.includes('parts_registry.html');
+        if (isRegistryPage) {
+            const registryPos = new THREE.Vector3(-17, 15, 40);
+            camera.position.copy(registryPos);
+            originalBlenderPos.copy(registryPos);
+        } else {
+            originalBlenderPos.copy(blenderCamera.position);
+        }
 
         // Update the aspect ratio to match the current html container dimensions stated in the setup cntainer function
         camera.aspect = sizes.width / sizes.height;

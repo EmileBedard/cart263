@@ -40,26 +40,7 @@ document.addEventListener("click", function (event) {
 
     }
 
-}); // code here written with the help of chatGPT. I use event delegation to make sure I attach the event listeners only after the bikeobjects are created. My issue in my original code commented below was that my bikeContainers array was empty because the code ran before the bikes were created.
-
-// function setupBikeListeners() {
-//     for (let i = 0; i < bikeContainers.length; i++) {
-
-//         let bikeContainer = bikeContainers[i];
-
-//         bikeContainer.addEventListener("click", function () {
-
-//             let partsZone = document.querySelector(".partsZone");
-
-//             console.log("bike object clicked!");
-
-//             partsZone.style.display = "grid";
-
-
-
-//         });
-//     };
-// };
+});
 
 // registers info in local storage and give feedback to user for succeeding
 let submitRegister = document.getElementById("complete-bike-details");
