@@ -5,37 +5,32 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { HDRLoader } from 'three/addons/loaders/HDRLoader.js';
-
-
 
 // setup ---- 
 
 //// gltf loader ----
 const gltfLoader = new GLTFLoader();
 
-
+// initial sizes
 let sizes = {
     width: window.innerWidth,
     height: window.innerHeight,
 };
 
+//sets new sizes based on html container dimensions
 setupContainer();
-
 function setupContainer() {
-
-    //// scene and canvas ----
     let container = document.querySelector('#canvas-container');
     sizes.width = container.clientWidth;
     sizes.height = container.clientHeight;
-
-    console.log(sizes.width, sizes.height)
 }
 
+//// scene and canvas ---
 const scene = new THREE.Scene();
 let canvas = document.querySelector("canvas#three-ex");
 
+//// camera (before attaching to blenderCamera)----
 let camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 1000);
 camera.position.set(0, 5, 10);
 scene.add(camera);
@@ -48,8 +43,6 @@ renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Good for sharp text/edges
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
-const controls = new OrbitControls(camera, renderer.domElement);
 
 //// effects composer ----
 const composer = new EffectComposer(renderer);
@@ -115,7 +108,7 @@ window.addEventListener('mousemove', (event) => {
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 });
-// used no matter protocamera or blendercamera
+// used to resize blendercamera
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
@@ -125,72 +118,50 @@ window.addEventListener('resize', () => {
 
 //// main run function ----
 function addAndRun(loadedObjsArray) {
-    const garageScene = loadedObjsArray[0].scene;
-
-    console.log(garageScene.children[0]);
+    const garageScene = loadedObjsArray[0].scene; //load blender data and place in the scene
     scene.add(garageScene);
 
-
-
-
-    ////camera toggle ----
+    ////camera from blender----
     let blenderCamera = garageScene.children.find(child => child.isCamera);
-    const protoCamera = camera;
-    //change between proto and blender cam here
+
+    //change between initial and blender cam here
     let usedCam = blenderCamera;
-
-
     if (usedCam === blenderCamera) {
         blenderCamera.name = "blenderCamera";
         camera = blenderCamera;
 
         originalBlenderPos.copy(blenderCamera.position);
 
-
-        // Update the aspect ratio to match the current window
-        camera.aspect = window.innerWidth / window.innerHeight;
+        // Update the aspect ratio to match the current html container dimensions stated in the setup cntainer function
+        camera.aspect = sizes.width / sizes.height;
         camera.updateProjectionMatrix();
-
-        // CRITICAL: Tell the composer and controls to use the new camera
         renderPass.camera = camera;
-        controls.object = camera;
-        controls.enabled = false;
     }
     else {
-        controls.object = camera; // Re-bind the controls to this camera
-        controls.enabled = true;
-        renderPass.camera = camera;
-        controls.update();
+        console.log("camera not loaded:error")
     }
 
     animate();
-
     function animate() {
         requestAnimationFrame(animate);
 
         if (camera.name === "blenderCamera") {
-            // 1. Calculate the target OFFSET (based on mouse)
+
+            // calculate offset
             targetPos.x = mouse.x * movementLimit;
             targetPos.y = mouse.y * movementLimit;
 
-            // 2. We use a separate variable or the camera itself to "Lerp" 
-            // to that target offset. Let's apply it directly to the camera:
-
-            // Target position = Original position + Mouse offset
+            // Target position
             const targetX = originalBlenderPos.x + targetPos.x;
             const targetY = originalBlenderPos.y + targetPos.y;
 
-            // Smoothly move the camera from where it IS to where it WANTS TO BE
+            // smooth translation on fictional x/y rectangle
             camera.position.x += (targetX - camera.position.x) * dampening;
             camera.position.y += (targetY - camera.position.y) * dampening;
 
-            // 4. Look at the center
-            camera.lookAt(0, 0, 0);
+            camera.lookAt(0, 0, 0); // look at bike
         }
-
-
-
-        composer.render(); // instead of renderer.render()
+        composer.render();
     }
 }
 
