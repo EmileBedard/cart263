@@ -153,13 +153,55 @@ function addAndRun(loadedObjsArray) {
         console.log("camera not loaded:error")
     }
 
-    // animation mixer ----
-    const mixer = new THREE.AnimationMixer(cabinetObj, workbenchObj)
+    // animation mixers ----
+    const mixer1 = new THREE.AnimationMixer(cabinetObj);
+    const mixer2 = new THREE.AnimationMixer(workbenchObj);
 
-    // Access open door aniamtion for cabinet
+    // Access open door animation for cabinet
     const cabinetClip = loadedObjsArray[1].animations[0];
-    const openDoor = mixer.clipAction(cabinetClip);
-    openDoor.play();
+    const openDoor = mixer1.clipAction(cabinetClip);
+    openDoor.setLoop(THREE.LoopOnce);
+    openDoor.repetitions = 1000;
+    openDoor.clampWhenFinished = true;
+    console.log(openDoor);
+
+    let rpButton = document.getElementById("registerPartsButton");
+
+    rpButton.addEventListener("mouseover", function () {
+        openDoor.timeScale = 1;
+        openDoor.paused = false
+        openDoor.play();
+    })
+
+    rpButton.addEventListener("mouseout", function () {
+        openDoor.timeScale = -1;
+        openDoor.paused = false
+        openDoor.play();
+    })
+
+    // Access open toolbox animation for workbench
+    const workbenchClip = loadedObjsArray[2].animations[0];
+    const openToolbox = mixer2.clipAction(workbenchClip);
+    openToolbox.setLoop(THREE.LoopOnce);
+    openToolbox.repetitions = 1000;
+    openToolbox.clampWhenFinished = true;
+    console.log(openToolbox);
+
+    let mButton = document.getElementById("maintenanceButton");
+    console.log(mButton);
+
+    mButton.addEventListener("mouseover", function () {
+        openToolbox.timeScale = 1;
+        openToolbox.paused = false
+        openToolbox.play();
+    })
+
+    mButton.addEventListener("mouseout", function () {
+        openToolbox.timeScale = -1;
+        openToolbox.paused = false
+        openToolbox.play();
+    })
+
 
 
     let elapsedTime = 0;
@@ -190,8 +232,9 @@ function addAndRun(loadedObjsArray) {
         }
 
         //animation mixer
-        if (mixer) {
-            mixer.update(deltaTime);
+        if (mixer1 || mixer2) {
+            mixer1.update(deltaTime);
+            mixer2.update(deltaTime);
         }
 
         composer.render();
