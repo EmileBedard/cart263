@@ -11,7 +11,9 @@ View this experience online!: [Interactive Bike Garage II](https://emilebedard.g
 
 **Version II implements a new modern look for the bike garage, a complete 3D immersive made with Three.JS**
 
-> Artist Statement II: [Click Here To See The Artist Statement II](assets/Interactive%20Bike%20Garage%20-%20Artist%20Statement%20-%20Emile%20Bedard.pdf)
+> Artist Statement video walkthrough: [Click Here To See The Artist Statement II Video](assets/artistStatement-videoWalkthrough-IBG2.mp4)
+
+> Artist Statement PDF with screenshots and details: [Click Here To See The Artist Statement II Text](assets/Interactive%20Bike%20Garage%202%20-%20Artist%20Statement%20-%20Emile%20Bedard.pdf)
 
 ---
 
